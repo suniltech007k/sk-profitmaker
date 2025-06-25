@@ -1,35 +1,6 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<style>
-.popup {
-  position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background-color: rgba(0, 0, 0, 0.8);
-  z-index: 1000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.popup-content {
-  background-color: #1e1e1e;
-  padding: 30px;
-  border-radius: 10px;
-  color: white;
-  max-width: 500px;
-  width: 90%;
-  position: relative;
-}
-
-.close-btn {
-  position: absolute;
-  top: 10px; right: 15px;
-  font-size: 24px;
-  cursor: pointer;
-  color: #ff9c00;
-}
-</style>
 
 <head>
   <meta charset="UTF-8" />
@@ -426,38 +397,17 @@ body::before {
 </section>
 
   <footer>
-<!-- Footer Links -->
-<div style="text-align: center; padding: 20px; background-color: #111;">
-  <a href="#" onclick="showPopup('termsPopup')" style="color: orange; margin-right: 20px;">Terms & Conditions</a>
-  <a href="#" onclick="showPopup('privacyPopup')" style="color: orange;">Privacy Policy</a>
+    <div style="margin-top: 20px;">
+  <a href="#terms" style="color: #ff9c00; text-decoration: underline; margin-right: 15px;">Terms & Conditions</a>
+  <a href="#privacy" style="color: #ff9c00; text-decoration: underline;">Privacy Policy</a>
 </div>
 
-<!-- Terms Popup -->
-<div id="termsPopup" class="popup" style="display:none;">
-  <div class="popup-content">
-    <span onclick="closePopup('termsPopup')" class="close-btn">&times;</span>
-    <h2>Terms & Conditions</h2>
-    <ul>
-      
-    <li>SK-ProfitMaker EA is a trading automation tool and does not guarantee profits.</li>
-      <li>You are solely responsible for any trading decisions or losses.</li>
-      <li>Reverse engineering, resale, or redistribution of the EA is prohibited.</li>
-      <li>No refunds are provided once the EA is delivered.</li>
-      <li>Support is offered via Telegram on a best-effort basis.</li>
-    </ul>
-    <p>This agreement is governed under general digital software licensing standards.</p>
-  </div>
-
-<!-- Privacy Popup -->
-<div id="privacyPopup" class="popup" style="display:none;">
-  <div class="popup-content">
-    <span onclick="closePopup('privacyPopup')" class="close-btn">&times;</span>
-    <h2>Privacy Policy</h2>
-    <p>We do not store your personal data. All transactions are handled via secure payment gateways like Razorpay or Telegram. We do not track, sell, or share your information.</p>
-  </div>
-</div>
-
-  
+    &copy; 2025 SK-ProfitMaker EA. All rights reserved.
+<section style="background-color: #2c0000; padding: 20px; text-align: center; color: #ffbaba; font-size: 0.9em;">
+  <strong>Risk Disclaimer:</strong> Trading in the forex market involves substantial risk and is not suitable for all investors.
+  You are under no obligation to purchase this EA. Any profits or losses incurred using this EA are solely your own responsibility.
+  SK-ProfitMaker has no involvement or liability in your trading decisions.
+</section>
   </footer>
   <script>
   document.querySelectorAll('.zoomable').forEach(img => {
@@ -504,70 +454,35 @@ body::before {
       });
   });
 </script>
-
-  <section class="section" id="counters" style="background-color: #111; padding: 60px 20px;">
-  <h2 style="color: #ff9c00;">Our Impact</h2>
-  <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 40px; margin-top: 30px;">
-    <div class="counter-box" style="text-align: center;">
-      <h1 id="users" style="font-size: 2.5rem; color: #fff;">0</h1>
-      <p style="color: #ccc;">Active Users</p>
-    </div>
-    <div class="counter-box" style="text-align: center;">
-      <h1 id="profits" style="font-size: 2.5rem; color: #fff;">0</h1>
-      <p style="color: #ccc;">Monthly Trades</p>
-    </div>
-    <div class="counter-box" style="text-align: center;">
-      <h1 id="uptime" style="font-size: 2.5rem; color: #fff;">0</h1>
-      <p style="color: #ccc;">Months Uptime</p>
-    </div>
+<section class="section" id="terms">
+  <h2>Terms & Conditions</h2>
+  <div style="max-width: 900px; margin: auto; text-align: left; font-size: 0.95rem;">
+    <p>By purchasing or using SK-ProfitMaker EA, you agree to the following terms:</p>
+    <ul style="line-height: 1.8;">
+      <li>SK-ProfitMaker EA is a trading automation tool and does not guarantee profits.</li>
+      <li>You are solely responsible for any trading decisions or losses.</li>
+      <li>Reverse engineering, resale, or redistribution of the EA is prohibited.</li>
+      <li>No refunds are provided once the EA is delivered.</li>
+      <li>Support is offered via Telegram on a best-effort basis.</li>
+    </ul>
+    <p>This agreement is governed under general digital software licensing standards.</p>
   </div>
 </section>
-</section>
-    &copy; 2025 SK-ProfitMaker EA. All rights reserved.
-<section style="background-color: #2c0000; padding: 20px; text-align: center; color: #ffbaba; font-size: 0.9em;">
-  <strong>Risk Disclaimer:</strong> Trading in the forex market involves substantial risk and is not suitable for all investors.
-  You are under no obligation to purchase this EA. Any profits or losses incurred using this EA are solely your own responsibility.
-  SK-ProfitMaker has no involvement or liability in your trading decisions.
-</section>
-  <script>
-  function animateCounter(id, target, speed) {
-    let count = 0;
-    const update = () => {
-      count += Math.ceil(target / speed);
-      if (count >= target) {
-        document.getElementById(id).innerText = target;
-        clearInterval(timer);
-      } else {
-        document.getElementById(id).innerText = count;
-      }
-    };
-    const timer = setInterval(update, 50);
-  }
 
-  function startCounters() {
-    animateCounter("users", 2, 30);
-    animateCounter("profits", 150, 50);
-    animateCounter("uptime", 12, 10);
-  }
-
-  let triggered = false;
-  window.addEventListener('scroll', () => {
-    const section = document.getElementById('counters');
-    const rect = section.getBoundingClientRect();
-    if (rect.top < window.innerHeight && !triggered) {
-      startCounters();
-      triggered = true;
-    }
-  });
-</script>
-<script>
-function showPopup(id) {
-  document.getElementById(id).style.display = 'flex';
-}
-function closePopup(id) {
-  document.getElementById(id).style.display = 'none';
-}
-</script>
+<section class="section" id="privacy">
+  <h2>Privacy Policy</h2>
+  <div style="max-width: 900px; margin: auto; text-align: left; font-size: 0.95rem;">
+    <p>Your privacy is important to us. Here's how we handle your information:</p>
+    <ul style="line-height: 1.8;">
+      <li>We collect your name, email, and message via the contact form to respond to your inquiries.</li>
+      <li>We do not sell, rent, or share your data with third parties.</li>
+      <li>All messages are securely transmitted to our team via Telegram Bot API.</li>
+      <li>We do not use cookies or tracking scripts on this website.</li>
+      <li>If you have any privacy concerns, please contact us via Telegram.</li>
+    </ul>
+    <p>This policy may be updated occasionally. Continued use of this site implies acceptance of our latest terms.</p>
+  </div>
+</section>
 
 </body>
 </html>
