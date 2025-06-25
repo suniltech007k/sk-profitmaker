@@ -479,10 +479,60 @@ body::before {
   </div>
 </section>
     &copy; 2025 SK-ProfitMaker EA. All rights reserved.
+  <section class="section" id="counters" style="background-color: #111; padding: 60px 20px;">
+  <h2 style="color: #ff9c00;">Our Impact</h2>
+  <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 40px; margin-top: 30px;">
+    <div class="counter-box" style="text-align: center;">
+      <h1 id="users" style="font-size: 2.5rem; color: #fff;">0</h1>
+      <p style="color: #ccc;">Active Users</p>
+    </div>
+    <div class="counter-box" style="text-align: center;">
+      <h1 id="profits" style="font-size: 2.5rem; color: #fff;">0</h1>
+      <p style="color: #ccc;">Monthly Trades</p>
+    </div>
+    <div class="counter-box" style="text-align: center;">
+      <h1 id="uptime" style="font-size: 2.5rem; color: #fff;">0</h1>
+      <p style="color: #ccc;">Months Uptime</p>
+    </div>
+  </div>
+</section>
+
 <section style="background-color: #2c0000; padding: 20px; text-align: center; color: #ffbaba; font-size: 0.9em;">
   <strong>Risk Disclaimer:</strong> Trading in the forex market involves substantial risk and is not suitable for all investors.
   You are under no obligation to purchase this EA. Any profits or losses incurred using this EA are solely your own responsibility.
   SK-ProfitMaker has no involvement or liability in your trading decisions.
 </section>
+  <script>
+  function animateCounter(id, target, speed) {
+    let count = 0;
+    const update = () => {
+      count += Math.ceil(target / speed);
+      if (count >= target) {
+        document.getElementById(id).innerText = target;
+        clearInterval(timer);
+      } else {
+        document.getElementById(id).innerText = count;
+      }
+    };
+    const timer = setInterval(update, 50);
+  }
+
+  function startCounters() {
+    animateCounter("users", 350, 30);
+    animateCounter("profits", 5200, 50);
+    animateCounter("uptime", 12, 10);
+  }
+
+  let triggered = false;
+  window.addEventListener('scroll', () => {
+    const section = document.getElementById('counters');
+    const rect = section.getBoundingClientRect();
+    if (rect.top < window.innerHeight && !triggered) {
+      startCounters();
+      triggered = true;
+    }
+  });
+</script>
+
 </body>
 </html>
