@@ -1,6 +1,35 @@
 
 <!DOCTYPE html>
 <html lang="en">
+<style>
+.popup {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.popup-content {
+  background-color: #1e1e1e;
+  padding: 30px;
+  border-radius: 10px;
+  color: white;
+  max-width: 500px;
+  width: 90%;
+  position: relative;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px; right: 15px;
+  font-size: 24px;
+  cursor: pointer;
+  color: #ff9c00;
+}
+</style>
 
 <head>
   <meta charset="UTF-8" />
@@ -402,6 +431,36 @@ body::before {
   <a href="#privacy" style="color: #ff9c00; text-decoration: underline;">Privacy Policy</a>
 </div>
 
+<!-- Footer Links -->
+<div style="text-align: center; padding: 20px; background-color: #111;">
+  <a href="#" onclick="showPopup('termsPopup')" style="color: orange; margin-right: 20px;">Terms & Conditions</a>
+  <a href="#" onclick="showPopup('privacyPopup')" style="color: orange;">Privacy Policy</a>
+</div>
+
+<!-- Terms Popup -->
+<div id="termsPopup" class="popup" style="display:none;">
+  <div class="popup-content">
+    <span onclick="closePopup('termsPopup')" class="close-btn">&times;</span>
+    <h2>Terms & Conditions</h2>
+    <ul>
+      <li>SK-ProfitMaker EA is a trading automation tool and does not guarantee profits.</li>
+      <li>You are solely responsible for any trading decisions or losses.</li>
+      <li>Reverse engineering, resale, or redistribution is prohibited.</li>
+      <li>No refunds after delivery of the EA.</li>
+      <li>Support is offered via Telegram on a best-effort basis.</li>
+    </ul>
+    <p>This agreement is governed under general digital software licensing standards.</p>
+  </div>
+</div>
+
+<!-- Privacy Popup -->
+<div id="privacyPopup" class="popup" style="display:none;">
+  <div class="popup-content">
+    <span onclick="closePopup('privacyPopup')" class="close-btn">&times;</span>
+    <h2>Privacy Policy</h2>
+    <p>We do not store your personal data. All transactions are handled via secure payment gateways like Razorpay or Telegram. We do not track, sell, or share your information.</p>
+  </div>
+</div>
 
   </footer>
   <script>
@@ -532,6 +591,14 @@ body::before {
       triggered = true;
     }
   });
+</script>
+<script>
+function showPopup(id) {
+  document.getElementById(id).style.display = 'flex';
+}
+function closePopup(id) {
+  document.getElementById(id).style.display = 'none';
+}
 </script>
 
 </body>
