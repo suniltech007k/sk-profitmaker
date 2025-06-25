@@ -398,8 +398,9 @@ body::before {
 
   <footer>
     <div style="margin-top: 20px;">
-  <a href="#terms" style="color: #ff9c00; text-decoration: underline; margin-right: 15px;">Terms & Conditions</a>
-  <a href="#privacy" style="color: #ff9c00; text-decoration: underline;">Privacy Policy</a>
+<a href="#" onclick="openModal('termsContent')" style="color: #ff9c00; text-decoration: underline; margin-right: 15px;">Terms & Conditions</a>
+<a href="#" onclick="openModal('privacyContent')" style="color: #ff9c00; text-decoration: underline;">Privacy Policy</a>
+
 </div>
 
     &copy; 2025 SK-ProfitMaker EA. All rights reserved.
@@ -454,35 +455,52 @@ body::before {
       });
   });
 </script>
-<section class="section" id="terms">
-  <h2>Terms & Conditions</h2>
-  <div style="max-width: 900px; margin: auto; text-align: left; font-size: 0.95rem;">
-    <p>By purchasing or using SK-ProfitMaker EA, you agree to the following terms:</p>
-    <ul style="line-height: 1.8;">
-      <li>SK-ProfitMaker EA is a trading automation tool and does not guarantee profits.</li>
-      <li>You are solely responsible for any trading decisions or losses.</li>
-      <li>Reverse engineering, resale, or redistribution of the EA is prohibited.</li>
-      <li>No refunds are provided once the EA is delivered.</li>
-      <li>Support is offered via Telegram on a best-effort basis.</li>
-    </ul>
-    <p>This agreement is governed under general digital software licensing standards.</p>
-  </div>
-</section>
+<!-- Modal for Terms & Privacy -->
+<div id="infoModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.95); z-index:9999; justify-content:center; align-items:center; padding: 40px; overflow-y:auto;">
+  <div style="background:#1e1e1e; padding: 30px; border-radius: 10px; max-width: 900px; width: 100%; max-height: 90vh; overflow-y: auto; transform: scale(0.8); transition: transform 0.3s ease;" id="modalContentBox">
+    <span onclick="closeModal()" style="position:absolute;top:20px;right:30px;font-size:30px;color:#ff9c00;cursor:pointer;">&times;</span>
 
-<section class="section" id="privacy">
-  <h2>Privacy Policy</h2>
-  <div style="max-width: 900px; margin: auto; text-align: left; font-size: 0.95rem;">
-    <p>Your privacy is important to us. Here's how we handle your information:</p>
-    <ul style="line-height: 1.8;">
-      <li>We collect your name, email, and message via the contact form to respond to your inquiries.</li>
-      <li>We do not sell, rent, or share your data with third parties.</li>
-      <li>All messages are securely transmitted to our team via Telegram Bot API.</li>
-      <li>We do not use cookies or tracking scripts on this website.</li>
-      <li>If you have any privacy concerns, please contact us via Telegram.</li>
-    </ul>
-    <p>This policy may be updated occasionally. Continued use of this site implies acceptance of our latest terms.</p>
+    <div id="termsContent" style="display: none;">
+      <h2>Terms & Conditions</h2>
+      <p>By purchasing or using SK-ProfitMaker EA, you agree to the following terms:</p>
+      <ul style="line-height: 1.8;">
+        <li>SK-ProfitMaker EA is a trading automation tool and does not guarantee profits.</li>
+        <li>You are solely responsible for any trading decisions or losses.</li>
+        <li>Reverse engineering, resale, or redistribution of the EA is prohibited.</li>
+        <li>No refunds are provided once the EA is delivered.</li>
+        <li>Support is offered via Telegram on a best-effort basis.</li>
+      </ul>
+      <p>This agreement is governed under general digital software licensing standards.</p>
+    </div>
+
+    <div id="privacyContent" style="display: none;">
+      <h2>Privacy Policy</h2>
+      <p>Your privacy is important to us. Here's how we handle your information:</p>
+      <ul style="line-height: 1.8;">
+        <li>We collect your name, email, and message via the contact form to respond to your inquiries.</li>
+        <li>We do not sell, rent, or share your data with third parties.</li>
+        <li>All messages are securely transmitted to our team via Telegram Bot API.</li>
+        <li>We do not use cookies or tracking scripts on this website.</li>
+        <li>If you have any privacy concerns, please contact us via Telegram.</li>
+      </ul>
+      <p>This policy may be updated occasionally. Continued use of this site implies acceptance of our latest terms.</p>
+    </div>
   </div>
-</section>
+</div>
+<script>
+  function openModal(sectionId) {
+    document.getElementById('infoModal').style.display = 'flex';
+    document.getElementById('modalContentBox').style.transform = 'scale(1)';
+    document.getElementById('termsContent').style.display = 'none';
+    document.getElementById('privacyContent').style.display = 'none';
+    document.getElementById(sectionId).style.display = 'block';
+  }
+
+  function closeModal() {
+    document.getElementById('infoModal').style.display = 'none';
+    document.getElementById('modalContentBox').style.transform = 'scale(0.8)';
+  }
+</script>
 
 </body>
 </html>
