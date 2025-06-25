@@ -334,7 +334,10 @@ updateCountdown();
         <h3 style="color: #ff9c00; font-size: 1.2rem;">1 Month</h3>
         <p style="font-size: 1.5rem; font-weight: bold;">$50</p>
         <a href="https://t.me/sunilmati007" target="_blank">
-         <button onclick="openCouponPopup('1 Month', 50)">Buy Now via Telegram</button>
+      <button onclick="openCouponPopup('1 Month', 50)" style="background-color: #25D366; color: #fff; padding: 10px 20px; border: none; border-radius: 6px; margin-top: 10px; cursor: pointer;">
+  Buy Now via Telegram
+</button>
+
         </a>
       </div>
 
@@ -342,7 +345,10 @@ updateCountdown();
         <h3 style="color: #ff9c00; font-size: 1.2rem;">3 Months</h3>
         <p style="font-size: 1.5rem; font-weight: bold;">$140</p>
         <a href="https://t.me/sunilmati007" target="_blank">
-         <button onclick="openCouponPopup('3 Months', 140)">Buy Now via Telegram</button>
+       <button onclick="openCouponPopup('3 Months', 140)" style="background-color: #25D366; color: #fff; padding: 10px 20px; border: none; border-radius: 6px; margin-top: 10px; cursor: pointer;">
+  Buy Now via Telegram
+</button>
+
         </a>
       </div>
 
@@ -350,7 +356,10 @@ updateCountdown();
         <h3 style="color: #ff9c00; font-size: 1.2rem;">6 Months</h3>
         <p style="font-size: 1.5rem; font-weight: bold;">$270</p>
         <a href="https://t.me/sunilmati007" target="_blank">
-         <button onclick="openCouponPopup('6 Months', 270)">Buy Now via Telegram</button>
+        <button onclick="openCouponPopup('6 Months', 270)" style="background-color: #25D366; color: #fff; padding: 10px 20px; border: none; border-radius: 6px; margin-top: 10px; cursor: pointer;">
+  Buy Now via Telegram
+</button>
+
         </a>
       </div>
 
@@ -358,7 +367,10 @@ updateCountdown();
         <h3 style="color: #ff9c00; font-size: 1.2rem;">Lifetime</h3>
         <p style="font-size: 1.5rem; font-weight: bold;">$1200</p>
         <a href="https://t.me/sunilmati007" target="_blank">
-         <button onclick="openCouponPopup('Lifetime', 1200)">Buy Now via Telegram</button>
+       <button onclick="openCouponPopup('Lifetime', 1200)" style="background-color: #25D366; color: #fff; padding: 10px 20px; border: none; border-radius: 6px; margin-top: 10px; cursor: pointer;">
+  Buy Now via Telegram
+</button>
+
         </a>
       </div>
 
@@ -672,9 +684,11 @@ updateCountdown();
     <h2 style="color:#ff9c00;">Apply Coupon</h2>
     <p id="selectedPlan" style="margin-bottom: 10px;"></p>
     <input type="text" id="couponInput" placeholder="Enter Coupon Code" style="width:100%; padding:10px; border-radius:6px; border:none; margin-bottom:10px;">
-    <button onclick="applyCoupon()" style="background-color:#ff9c00; color:#000; padding:10px 15px; border:none; border-radius:6px; margin-bottom:10px;">Apply</button>
+    <button onclick="applyCoupon()" style="background-color:#ff9c00; color:#000; padding:10px 15px; border:none; border-radius:6px; margin-bottom:10px; width:100%;">Apply</button>
     <p id="discountResult" style="font-size:1.1rem;"></p>
-    <button id="continueTelegramBtn" style="display:none; background:#25D366; color:#fff; padding:10px 15px; border:none; border-radius:6px; margin-top:10px; cursor:pointer;">Continue to Telegram</button>
+    
+    <button id="continueTelegramBtn" style="display:none; background:#25D366; color:#fff; padding:10px 15px; border:none; border-radius:6px; margin-top:10px; width:100%; cursor:pointer;">Continue to Telegram</button>
+    <button onclick="skipCoupon()" style="margin-top:10px; background-color: transparent; color: #ff9c00; border: 1px solid #ff9c00; padding: 10px 15px; border-radius:6px; width:100%; cursor:pointer;">Skip & Continue Without Coupon</button>
   </div>
 </div>
 
@@ -715,6 +729,13 @@ updateCountdown();
       discountEl.innerText = "❌ Invalid Coupon Code";
       continueBtn.style.display = "none";
     }
+  }
+
+  function skipCoupon() {
+    const message = `Hi, I want to buy the ${selectedPlan} plan without a coupon. Price: $${originalPrice}`;
+    const telegramURL = `https://t.me/sunilmati007?text=${encodeURIComponent(message)}`;
+    window.open(telegramURL, "_blank");
+    closeCouponPopup();
   }
 </script>
 
