@@ -875,39 +875,13 @@ window.addEventListener('DOMContentLoaded', function () {
   }
 </script>
 <script>
-  const countdown = document.getElementById("countdown");
-  const expiry = new Date(siteConfig.offerExpiry);
   const now = new Date();
+  const expiry = new Date(siteConfig.offerExpiry);
 
-  // ✅ Countdown + Flower Rain condition
   if (now < expiry) {
-    startFlowerRain();
-  } else {
-    countdown.innerText = "EXPIRED";
+    startFlowerRain(); // 🌸 Barsaat shuru karo
   }
 
-  // ⏳ Countdown function
-  function updateCountdown() {
-    const now = new Date();
-    const diff = expiry - now;
-
-    if (diff <= 0) {
-      countdown.innerText = "EXPIRED";
-      return;
-    }
-
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const hrs = Math.floor((diff / (1000 * 60 * 60)) % 24);
-    const mins = Math.floor((diff / 1000 / 60) % 60);
-    const secs = Math.floor((diff / 1000) % 60);
-
-    countdown.innerText = `${days}d ${hrs}h ${mins}m ${secs}s`;
-  }
-
-  setInterval(updateCountdown, 1000);
-  updateCountdown();
-
-  // 🌸 Flower Rain Function
   function startFlowerRain() {
     const flowers = ["🌸", "🌺", "🌷", "💐", "🌹", "🌼"];
     const interval = setInterval(() => {
@@ -917,12 +891,19 @@ window.addEventListener('DOMContentLoaded', function () {
       flower.style.left = Math.random() * 100 + "vw";
       flower.style.animationDuration = (3 + Math.random() * 2) + "s";
       flower.style.fontSize = (20 + Math.random() * 20) + "px";
-      document.body.appendChild(flower);
-      setTimeout(() => flower.remove(), 5000);
-    }, 300);
 
-    // Stop flower rain after actual expiry time
-    setTimeout(() => clearInterval(interval), expiry - new Date());
+      document.body.appendChild(flower);
+
+      setTimeout(() => {
+        flower.remove();
+      }, 5000);
+    }, 300);
+    
+    // Stop animation after offer expires
+    const timeout = expiry - new Date();
+    setTimeout(() => {
+      clearInterval(interval);
+    }, timeout);
   }
 </script>
 
