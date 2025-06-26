@@ -1,6 +1,21 @@
  
 <!DOCTYPE html>
 <html lang="en">
+<style>
+  .flower {
+    position: fixed;
+    top: -50px;
+    pointer-events: none;
+    z-index: 999;
+    font-size: 24px;
+    animation: fall linear infinite;
+  }
+
+  @keyframes fall {
+    0% { transform: translateY(0); opacity: 1; }
+    100% { transform: translateY(100vh); opacity: 0; }
+  }
+</style>
 
 <head>
  <script>
@@ -857,6 +872,38 @@ window.addEventListener('DOMContentLoaded', function () {
   if (ref === 'exness') {
     document.getElementById('ref-offer-banner').style.display = 'block';
     document.getElementById('normal-banner').style.display = 'none';
+  }
+</script>
+<script>
+  const now = new Date();
+  const expiry = new Date(siteConfig.offerExpiry);
+
+  if (now < expiry) {
+    startFlowerRain(); // 🌸 Barsaat shuru karo
+  }
+
+  function startFlowerRain() {
+    const flowers = ["🌸", "🌺", "🌷", "💐", "🌹", "🌼"];
+    const interval = setInterval(() => {
+      const flower = document.createElement("div");
+      flower.classList.add("flower");
+      flower.innerText = flowers[Math.floor(Math.random() * flowers.length)];
+      flower.style.left = Math.random() * 100 + "vw";
+      flower.style.animationDuration = (3 + Math.random() * 2) + "s";
+      flower.style.fontSize = (20 + Math.random() * 20) + "px";
+
+      document.body.appendChild(flower);
+
+      setTimeout(() => {
+        flower.remove();
+      }, 5000);
+    }, 300);
+    
+    // Stop animation after offer expires
+    const timeout = expiry - new Date();
+    setTimeout(() => {
+      clearInterval(interval);
+    }, timeout);
   }
 </script>
 
