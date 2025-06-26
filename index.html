@@ -1,21 +1,6 @@
  
 <!DOCTYPE html>
 <html lang="en">
-<style>
-  .flower {
-    position: fixed;
-    top: -50px;
-    pointer-events: none;
-    z-index: 999;
-    font-size: 24px;
-    animation: fall linear infinite;
-  }
-
-  @keyframes fall {
-    0% { transform: translateY(0); opacity: 1; }
-    100% { transform: translateY(100vh); opacity: 0; }
-  }
-</style>
 
 <head>
  <script>
@@ -402,7 +387,7 @@ window.addEventListener('DOMContentLoaded', function () {
   const countdown = document.getElementById("countdown");
 
   // ✅ Apni offer ki expiry date yahan set karo:
-  const endDate = new Date("2025-06-27T20:45:59"); // Format: YYYY-MM-DDTHH:MM:SS
+  const endDate = new Date("2025-06-26T20:45:59"); // Format: YYYY-MM-DDTHH:MM:SS
 
   function updateCountdown() {
     const now = new Date();
@@ -872,53 +857,6 @@ window.addEventListener('DOMContentLoaded', function () {
   if (ref === 'exness') {
     document.getElementById('ref-offer-banner').style.display = 'block';
     document.getElementById('normal-banner').style.display = 'none';
-  }
-</script>
-<script>
-  const countdown = document.getElementById("countdown");
-  const expiry = new Date(siteConfig.offerExpiry);
-  const now = new Date();
-
-  if (now < expiry) {
-    startFlowerRain();
-  } else {
-    countdown.innerText = "EXPIRED";
-  }
-
-  function updateCountdown() {
-    const now = new Date();
-    const diff = expiry - now;
-
-    if (diff <= 0) {
-      countdown.innerText = "EXPIRED";
-      return;
-    }
-
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const hrs = Math.floor((diff / (1000 * 60 * 60)) % 24);
-    const mins = Math.floor((diff / 1000 / 60) % 60);
-    const secs = Math.floor((diff / 1000) % 60);
-    countdown.innerText = `${days}d ${hrs}h ${mins}m ${secs}s`;
-  }
-
-  setInterval(updateCountdown, 1000);
-  updateCountdown();
-
-  function startFlowerRain() {
-    const flowers = ["🌸", "🌺", "🌷", "💐", "🌹", "🌼"];
-    const interval = setInterval(() => {
-      const flower = document.createElement("div");
-      flower.classList.add("flower");
-      flower.innerText = flowers[Math.floor(Math.random() * flowers.length)];
-      flower.style.left = Math.random() * 100 + "vw";
-      flower.style.animationDuration = (3 + Math.random() * 2) + "s";
-      flower.style.fontSize = (20 + Math.random() * 20) + "px";
-      document.body.appendChild(flower);
-      setTimeout(() => flower.remove(), 5000);
-    }, 300);
-
-    // Stop animation after actual expiry time
-    setTimeout(() => clearInterval(interval), expiry - new Date());
   }
 </script>
 
