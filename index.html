@@ -382,34 +382,6 @@ window.addEventListener('DOMContentLoaded', function () {
   ⏳ Offer expires in: <span id="countdown" style="color: #fff;"></span>
 </section>
 
-<!-- ✅ Correct Countdown Script -->
-<script>
-  const countdown = document.getElementById("countdown");
-
-  // ✅ Fixed expiry date & time (30 June 2025, 11:59:59 PM)
-  const endDate = new Date("2025-06-30T23:59:59");
-
-  function updateCountdown() {
-    const now = new Date();
-    const diff = endDate - now;
-
-    if (diff <= 0) {
-      countdown.innerText = "EXPIRED";
-      return;
-    }
-
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const hrs = Math.floor((diff / (1000 * 60 * 60)) % 24);
-    const mins = Math.floor((diff / 1000 / 60) % 60);
-    const secs = Math.floor((diff / 1000) % 60);
-
-    countdown.innerText = `${days}d ${hrs}h ${mins}m ${secs}s`;
-  }
-
-  setInterval(updateCountdown, 1000);
-  updateCountdown();
-</script>
-
 
   const days = Math.floor(diff / (1000 * 60 * 60 * 24));
   const hrs = Math.floor((diff / (1000 * 60 * 60)) % 24);
@@ -871,6 +843,34 @@ updateCountdown();
     document.getElementById('normal-banner').style.display = 'none';
   }
 </script>
+<!-- ✅ Correct Countdown Script -->
+<script>
+  const countdown = document.getElementById("countdown");
+
+  // ✅ Fixed expiry date & time (30 June 2025, 11:59:59 PM)
+  const endDate = new Date("2025-06-30T23:59:59");
+
+  function updateCountdown() {
+    const now = new Date();
+    const diff = endDate - now;
+
+    if (diff <= 0) {
+      countdown.innerText = "EXPIRED";
+      return;
+    }
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hrs = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const mins = Math.floor((diff / 1000 / 60) % 60);
+    const secs = Math.floor((diff / 1000) % 60);
+
+    countdown.innerText = `${days}d ${hrs}h ${mins}m ${secs}s`;
+  }
+
+  setInterval(updateCountdown, 1000);
+  updateCountdown();
+</script>
+
 
 </body>
 </html>
