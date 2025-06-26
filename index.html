@@ -129,6 +129,29 @@ body::before {
 
 </head>
 
+<!-- 🔻 Referral-Based Discount Banner (Hidden by default) -->
+<div id="halfPriceBanner"
+     style="display:none; background:#fff7cc; padding: 20px; text-align: center; font-size: 1.2rem; font-weight: bold; border-top: 2px dashed #ffc107; border-bottom: 2px dashed #ffc107;">
+  🎉 You visited through our Exness referral link!  
+  👉 Complete your Exness account registration and <span style="color:red;">get 50% OFF</span> on our EA — no coupon needed.
+  <br><br>
+  ✅ Confirm your account on Telegram:
+  <a href="https://t.me/Sunilmati007" target="_blank" style="color: #007bff; text-decoration: underline;">@Sunilmati007</a>
+</div>
+<script>
+// ✅ Set flag when Exness link is clicked
+function setReferralFlag() {
+  localStorage.setItem("fromExnessReferral", "true");
+}
+
+// ✅ When page loads, check for referral flag
+window.addEventListener('DOMContentLoaded', function () {
+  const referralFlag = localStorage.getItem("fromExnessReferral");
+  if (referralFlag === "true") {
+    document.getElementById("halfPriceBanner").style.display = "block";
+  }
+});
+</script>
 
 <body>
 <!-- ✅ Upgraded Hero Section: Logo Left, Robot Right -->
@@ -410,10 +433,13 @@ updateCountdown();
   </div>
 
   <!-- 🟢 Referral Link Button -->
-  <a href="https://one.exnesstrack.org/a/w9folgjwio" target="_blank"
-     style="background-color: #000; color: #fff; padding: 10px 20px; font-weight: bold; border-radius: 6px; text-decoration: none; box-shadow: 0 0 8px rgba(0,0,0,0.4);">
-    🎯 Open with Exness Now
-  </a>
+  <a href="https://one.exnesstrack.org/a/w9folgjwio"
+   target="_blank"
+   onclick="setReferralFlag()"
+   style="background-color: #000; color: #fff; padding: 10px 20px; font-weight: bold; border-radius: 6px; text-decoration: none; box-shadow: 0 0 8px rgba(0,0,0,0.4);">
+  🎯 Open with Exness Now
+</a>
+
 </section>
 
 
