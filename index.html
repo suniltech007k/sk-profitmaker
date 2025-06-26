@@ -398,10 +398,25 @@ updateCountdown();
     </div>
   </section>
 
-<section style="background: linear-gradient(90deg, #ff9c00, #ffb300); color: #000; text-align: center; padding: 30px 20px; font-weight: bold; font-size: 1.2rem;">
-  🚀 Ready to trade smarter with SK-ProfitMaker EA? 
-  <a href="https://t.me/Sunilmati007" target="_blank" style="background-color:#000; color:#fff; padding:10px 20px; margin-left:15px; border-radius:6px; text-decoration: none;">Join Now on Telegram</a>
+<!-- 🎯 REFERRAL BANNER -->
+<section id="ref-offer-banner" style="display: none; background: linear-gradient(90deg, #ffb300, #ff9c00); padding: 25px 20px; text-align: center;">
+  <span style="font-weight: bold; font-size: 1.2rem;">
+    🚀 You joined via our <strong>Exness Partner Link</strong> — Enjoy <span style="color:red;">50% OFF</span> instantly! 🎉 <br>
+    <small style="font-size: 0.95rem;">No coupon required. Trade on Exness & save big!</small>
+  </span>
+  <a href="https://t.me/Sunilmati007" target="_blank"
+     style="background-color: #000; color: #fff; padding: 10px 25px; margin-left: 20px; border-radius: 6px; font-weight: bold; font-size: 1rem; display: inline-block;">Join Now on Telegram</a>
 </section>
+
+<!-- 🟡 NORMAL BANNER -->
+<section id="normal-banner" style="background: linear-gradient(90deg, #ffb300, #ff9c00); padding: 25px 20px; text-align: center;">
+  <span style="font-weight: bold; font-size: 1.2rem;">
+    🚀 Ready to trade smarter with <strong>SK-ProfitMaker EA</strong>?
+  </span>
+  <a href="https://t.me/Sunilmati007" target="_blank"
+     style="background-color: #000; color: #fff; padding: 10px 25px; margin-left: 20px; border-radius: 6px; font-weight: bold; font-size: 1rem; display: inline-block;">Join Now on Telegram</a>
+</section>
+
 
    
       <section class="section">
@@ -766,6 +781,21 @@ updateCountdown();
 <img src="robot-icon.png"
      alt="AI Bot"
      style="position: fixed; bottom: 100px; left: 20px; width: 64px; height: 64px; z-index: 999;">
+<!-- ... your other content ... -->
+
+<script>
+  // Exness ref detection
+  const urlParams = new URLSearchParams(window.location.search);
+  const ref = urlParams.get('ref');
+
+  if (ref === 'exness') {
+    document.getElementById('ref-offer-banner').style.display = 'block';
+    document.getElementById('normal-banner').style.display = 'none';
+  }
+</script>
+
+</body>
+</html>
 
 </body>
 
