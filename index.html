@@ -382,12 +382,12 @@ window.addEventListener('DOMContentLoaded', function () {
   ⏳ Offer expires in: <span id="countdown" style="color: #fff;"></span>
 </section>
 
+<!-- ✅ Correct Countdown Script -->
 <script>
-// Countdown timer to a fixed deadline (e.g., 3 days from now)
   const countdown = document.getElementById("countdown");
 
-  // ✅ Yahan apni expiry date & time set karo (YYYY-MM-DDTHH:MM:SS)
-  const endDate = new Date("2025-06-30T23:59:59"); // Example: 30 June 2025, 11:59:59 PM
+  // ✅ Fixed expiry date & time (30 June 2025, 11:59:59 PM)
+  const endDate = new Date("2025-06-30T23:59:59");
 
   function updateCountdown() {
     const now = new Date();
