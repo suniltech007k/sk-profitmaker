@@ -384,18 +384,33 @@ window.addEventListener('DOMContentLoaded', function () {
 
 <script>
 // Countdown timer to a fixed deadline (e.g., 3 days from now)
-const countdown = document.getElementById("countdown");
-const endDate = new Date();
-endDate.setDate(endDate.getDate() + 3); // 3 days from now
+<script>
+  const countdown = document.getElementById("countdown");
 
-function updateCountdown() {
-  const now = new Date();
-  const diff = endDate - now;
+  // ✅ Yahan apni expiry date & time set karo (YYYY-MM-DDTHH:MM:SS)
+  const endDate = new Date("2025-06-30T23:59:59"); // Example: 30 June 2025, 11:59:59 PM
 
-  if (diff <= 0) {
-    countdown.innerText = "EXPIRED";
-    return;
+  function updateCountdown() {
+    const now = new Date();
+    const diff = endDate - now;
+
+    if (diff <= 0) {
+      countdown.innerText = "EXPIRED";
+      return;
+    }
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hrs = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const mins = Math.floor((diff / 1000 / 60) % 60);
+    const secs = Math.floor((diff / 1000) % 60);
+
+    countdown.innerText = `${days}d ${hrs}h ${mins}m ${secs}s`;
   }
+
+  setInterval(updateCountdown, 1000);
+  updateCountdown();
+</script>
+
 
   const days = Math.floor(diff / (1000 * 60 * 60 * 24));
   const hrs = Math.floor((diff / (1000 * 60 * 60)) % 24);
