@@ -919,24 +919,24 @@ window.addEventListener('DOMContentLoaded', function () {
       const discounted = (originalPrice * 0.7).toFixed(2);
       discountEl.innerText = `✅ Coupon Applied! Final Price: $${discounted}`;
       continueBtn.style.display = "inline-block";
-      continueBtn.onclick = function () {
-        const message = `Hi, I want to buy the ${selectedPlan} plan using coupon SK30OFF. Final price: $${discounted}`;
-        const telegramURL = `https://t.me/Sunilmati007?text=${encodeURIComponent(message)}`;
-        window.open(telegramURL, "_blank");
-        closeCouponPopup();
-      };
+continueBtn.onclick = function () {
+  const message = `Hi, I want to buy the ${selectedPlan} plan using coupon SK30OFF. Final price: $${discounted}`;
+  window.open("https://t.me/+_yobw7_D-H03Njdl", "_blank"); // Private group open
+  closeCouponPopup();
+};
+
     } else {
       discountEl.innerText = "❌ Invalid Coupon Code";
       continueBtn.style.display = "none";
     }
   }
 
-  function skipCoupon() {
-    const message = `Hi, I want to buy the ${selectedPlan} plan without a coupon. Price: $${originalPrice}`;
-    const telegramURL = `https://t.me/Sunilmati007?text=${encodeURIComponent(message)}`;
-    window.open(telegramURL, "_blank");
-    closeCouponPopup();
-  }
+ function skipCoupon() {
+   const message = `Hi, I want to buy the ${selectedPlan} plan without a coupon. Price: $${originalPrice}`;
+  window.open("https://t.me/+_yobw7_D-H03Njdl", "_blank"); // Private group open
+  closeCouponPopup();
+}
+
 </script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
