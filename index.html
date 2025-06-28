@@ -15,22 +15,6 @@
     0% { transform: translateY(0); opacity: 1; }
     100% { transform: translateY(100vh); opacity: 0; }
   }
- <script>
-function sendBuyToTelegram() {
-  fetch("https://api.telegram.org/bot<7796130986:AAEn-fpAdPsxlARq7wGtkpdjVzuudPgpqyk>/sendMessage", {
-    method: "POST",
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      chat_id: "630572011",  // ← Replace with your group chat ID
-      text: "🛒 User clicked Buy Now for 3-Month plan via Telegram (No coupon)"
-    })
-  });
-
-  // Open Telegram group
-  window.open("https://t.me/+_yobw7_D-H03Njdl", "_blank");
-}
-</script>
-
 </style>
 
 <head>
@@ -497,10 +481,6 @@ window.addEventListener('DOMContentLoaded', function () {
       <button onclick="openCouponPopup('1 Month', 50)" class="buy-now-button" style="background-color: #25D366; color: #fff; padding: 10px 20px; border: none; border-radius: 6px; margin-top: 10px; cursor: pointer;">
   Buy Now via Telegram
 </button>
-<button onclick="sendBuyToTelegram()" 
-        style="background:#ff5555; color:#fff; padding:10px 20px; border:none; border-radius:6px; margin-top:10px;">
-  Skip & Buy via Telegram
-</button>
 
         </a>
       </div>
@@ -511,10 +491,6 @@ window.addEventListener('DOMContentLoaded', function () {
        
        <button onclick="openCouponPopup('3 Months', 140)" class="buy-now-button" style="background-color: #25D366; color: #fff; padding: 10px 20px; border: none; border-radius: 6px; margin-top: 10px; cursor: pointer;">
   Buy Now via Telegram
-</button>
-<button onclick="sendBuyToTelegram()" 
-        style="background:#ff5555; color:#fff; padding:10px 20px; border:none; border-radius:6px; margin-top:10px;">
-  Skip & Buy via Telegram
 </button>
 
         </a>
@@ -527,10 +503,6 @@ window.addEventListener('DOMContentLoaded', function () {
         <button onclick="openCouponPopup('6 Months', 270)" class="buy-now-button" style="background-color: #25D366; color: #fff; padding: 10px 20px; border: none; border-radius: 6px; margin-top: 10px; cursor: pointer;">
   Buy Now via Telegram
 </button>
-<button onclick="sendBuyToTelegram()" 
-        style="background:#ff5555; color:#fff; padding:10px 20px; border:none; border-radius:6px; margin-top:10px;">
-  Skip & Buy via Telegram
-</button>
 
         </a>
       </div>
@@ -541,10 +513,6 @@ window.addEventListener('DOMContentLoaded', function () {
        
        <button onclick="openCouponPopup('Lifetime', 1200)" class="buy-now-button" style="background-color: #25D366; color: #fff; padding: 10px 20px; border: none; border-radius: 6px; margin-top: 10px; cursor: pointer;">
   Buy Now via Telegram
-</button>
-<button onclick="sendBuyToTelegram()" 
-        style="background:#ff5555; color:#fff; padding:10px 20px; border:none; border-radius:6px; margin-top:10px;">
-  Skip & Buy via Telegram
 </button>
 
         </a>
@@ -1020,22 +988,6 @@ window.addEventListener('DOMContentLoaded', function () {
       clearInterval(interval);
     }, timeout);
   }
-</script>
-<script>
-function sendBuyToTelegram() {
-  // 1. Bot se message bhejna
-  fetch("https://api.telegram.org/bot<7796130986:AAEn-fpAdPsxlARq7wGtkpdjVzuudPgpqyk>/sendMessage", {
-    method: "POST",
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      chat_id: "630572011",  // Replace with your group chat ID
-      text: "🛒 Someone clicked BUY NOW via Telegram (without coupon)"
-    })
-  });
-
-  // 2. Telegram group me open karna
-  window.open("https://t.me/+_yobw7_D-H03Njdl", "_blank");
-}
 </script>
 
 </body>
