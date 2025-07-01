@@ -18,13 +18,6 @@
 
 .hero {
   background: linear-gradient(-45deg, #fcb045, #fd1d1d, #833ab4, #fcb045);
- @media (max-width: 768px) {
-  .hero .container {
-    flex-direction: column !important;
-    text-align: center;
-  }
-}
-
   background-size: 400% 400%;
   animation: gradientFlow 10s ease infinite;
   color: black;
@@ -67,6 +60,34 @@
 @keyframes borderAnim {
   0% {border-image-slice: 1;}
   100% {border-image-slice: 1;}
+}
+
+
+@media (max-width: 768px) {
+  .hero .container {
+    flex-direction: column !important;
+    text-align: center;
+  }
+
+  .feature {
+    width: 100% !important;
+    max-width: 100%; max-width: 280px;
+  }
+
+  .buy-now-button {
+    width: 100%;
+    max-width: 100%; max-width: 220px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero h1 {
+    font-size: 1.8rem !important;
+  }
+
+  .hero p {
+    font-size: 1rem !important;
+  }
 }
 
 </style>
@@ -188,9 +209,7 @@
       background-color: #1e1e1e;
       border-radius: 10px;
       padding: 20px;
-        width: 100%;
-  max-width: 280px;
-
+      width: 100%; max-width: 280px;
       box-shadow: 0 0 10px rgba(255, 156, 0, 0.4);
     }
 
@@ -319,6 +338,34 @@ body::before {
 @keyframes borderAnim {
   0% {border-image-slice: 1;}
   100% {border-image-slice: 1;}
+}
+
+
+@media (max-width: 768px) {
+  .hero .container {
+    flex-direction: column !important;
+    text-align: center;
+  }
+
+  .feature {
+    width: 100% !important;
+    max-width: 100%; max-width: 280px;
+  }
+
+  .buy-now-button {
+    width: 100%;
+    max-width: 100%; max-width: 220px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero h1 {
+    font-size: 1.8rem !important;
+  }
+
+  .hero p {
+    font-size: 1rem !important;
+  }
 }
 
 </style>
@@ -594,7 +641,7 @@ window.addEventListener('DOMContentLoaded', function () {
     <h2 style="font-size: 2rem; margin-bottom: 30px;">Choose Your Plan</h2>
     <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
 
-       text-align: center; box-shadow: 0 0 10px rgba(255,156,0,0.2);">
+      <div style="background-color: #1e1e1e; padding: 25px; border-radius: 12px; width: 100%; max-width: 220px; text-align: center; box-shadow: 0 0 10px rgba(255,156,0,0.2);">
         <h3 style="color: #ff9c00; font-size: 1.2rem;">1 Month</h3>
         <p style="font-size: 1.5rem; font-weight: bold;">$50</p>
      
@@ -605,7 +652,7 @@ window.addEventListener('DOMContentLoaded', function () {
         </a>
       </div>
 
-       text-align: center; box-shadow: 0 0 10px rgba(255,156,0,0.2);">
+      <div style="background-color: #1e1e1e; padding: 25px; border-radius: 12px; width: 100%; max-width: 220px; text-align: center; box-shadow: 0 0 10px rgba(255,156,0,0.2);">
         <h3 style="color: #ff9c00; font-size: 1.2rem;">3 Months</h3>
         <p style="font-size: 1.5rem; font-weight: bold;">$140</p>
        
@@ -616,7 +663,7 @@ window.addEventListener('DOMContentLoaded', function () {
         </a>
       </div>
 
-       text-align: center; box-shadow: 0 0 10px rgba(255,156,0,0.2);">
+      <div style="background-color: #1e1e1e; padding: 25px; border-radius: 12px; width: 100%; max-width: 220px; text-align: center; box-shadow: 0 0 10px rgba(255,156,0,0.2);">
         <h3 style="color: #ff9c00; font-size: 1.2rem;">6 Months</h3>
         <p style="font-size: 1.5rem; font-weight: bold;">$270</p>
       
@@ -627,7 +674,7 @@ window.addEventListener('DOMContentLoaded', function () {
         </a>
       </div>
 
-       text-align: center; box-shadow: 0 0 10px rgba(255,156,0,0.2);">
+      <div style="background-color: #1e1e1e; padding: 25px; border-radius: 12px; width: 100%; max-width: 220px; text-align: center; box-shadow: 0 0 10px rgba(255,156,0,0.2);">
         <h3 style="color: #ff9c00; font-size: 1.2rem;">Lifetime</h3>
         <p style="font-size: 1.5rem; font-weight: bold;">$1200</p>
        
