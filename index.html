@@ -15,6 +15,53 @@
     0% { transform: translateY(0); opacity: 1; }
     100% { transform: translateY(100vh); opacity: 0; }
   }
+
+.hero {
+  background: linear-gradient(-45deg, #fcb045, #fd1d1d, #833ab4, #fcb045);
+  background-size: 400% 400%;
+  animation: gradientFlow 10s ease infinite;
+  color: black;
+  padding: 80px 20px;
+}
+@keyframes gradientFlow {
+  0% {background-position: 0% 50%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
+}
+.cta-button {
+  background-color: #000;
+  color: #fff;
+  padding: 12px 30px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border-radius: 8px;
+  box-shadow: 0 0 15px #fcb045;
+  transition: 0.3s;
+}
+.cta-button:hover {
+  background: #fff;
+  color: #000;
+  box-shadow: 0 0 25px #fcb045, 0 0 40px #fd1d1d;
+}
+.robot-glow {
+  filter: drop-shadow(0 0 8px #ffae00) drop-shadow(0 0 12px #ff0000);
+  animation: glowPulse 2s infinite;
+}
+@keyframes glowPulse {
+  0%, 100% { filter: drop-shadow(0 0 8px #ffae00); }
+  50% { filter: drop-shadow(0 0 20px #ff0000); }
+}
+.logo-border {
+  padding: 10px;
+  border: 5px solid;
+  border-image: linear-gradient(45deg, #ff9c00, #f00000, #ff9c00) 1;
+  animation: borderAnim 5s linear infinite;
+}
+@keyframes borderAnim {
+  0% {border-image-slice: 1;}
+  100% {border-image-slice: 1;}
+}
+
 </style>
 
 <head>
@@ -218,6 +265,53 @@ body::before {
   margin: 0;
 }
 
+
+.hero {
+  background: linear-gradient(-45deg, #fcb045, #fd1d1d, #833ab4, #fcb045);
+  background-size: 400% 400%;
+  animation: gradientFlow 10s ease infinite;
+  color: black;
+  padding: 80px 20px;
+}
+@keyframes gradientFlow {
+  0% {background-position: 0% 50%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
+}
+.cta-button {
+  background-color: #000;
+  color: #fff;
+  padding: 12px 30px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border-radius: 8px;
+  box-shadow: 0 0 15px #fcb045;
+  transition: 0.3s;
+}
+.cta-button:hover {
+  background: #fff;
+  color: #000;
+  box-shadow: 0 0 25px #fcb045, 0 0 40px #fd1d1d;
+}
+.robot-glow {
+  filter: drop-shadow(0 0 8px #ffae00) drop-shadow(0 0 12px #ff0000);
+  animation: glowPulse 2s infinite;
+}
+@keyframes glowPulse {
+  0%, 100% { filter: drop-shadow(0 0 8px #ffae00); }
+  50% { filter: drop-shadow(0 0 20px #ff0000); }
+}
+.logo-border {
+  padding: 10px;
+  border: 5px solid;
+  border-image: linear-gradient(45deg, #ff9c00, #f00000, #ff9c00) 1;
+  animation: borderAnim 5s linear infinite;
+}
+@keyframes borderAnim {
+  0% {border-image-slice: 1;}
+  100% {border-image-slice: 1;}
+}
+
 </style>
  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
@@ -251,32 +345,39 @@ window.addEventListener('DOMContentLoaded', function () {
 
 <body>
 <!-- ✅ Upgraded Hero Section: Logo Left, Robot Right -->
-<section style="background: linear-gradient(90deg, #ff9c00, #ffb300); color: black; padding: 80px 20px;">
+<!-- ✅ Final Combined Hero Section -->
+<section class="hero-split" style="background: linear-gradient(135deg, #7e4fd4, #a26cf0); color: white; padding: 80px 20px;">
   <div style="max-width: 1200px; margin: auto; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 40px;">
 
-    <!-- ✅ LEFT: SK Logo -->
+    <!-- 🔹 LEFT: Headline + CTA -->
     <div style="flex: 1; text-align: center;">
-      <img src="logo.png" alt="SK Logo"
-     style="max-width: 320px; width: 100%; margin-bottom: 20px; box-shadow: 0 0 12px rgba(0,0,0,0.3); border-radius: 12px;">
-
-    </div>
-
-    <!-- ✅ RIGHT: Headline + CTA + Robot -->
-    <div style="flex: 1; text-align: center;">
-      <h1 style="font-size: 2.5rem; margin-bottom: 15px;">Automate Your Gold Trades with <span style="color: #000;">SK-ProfitMaker EA</span></h1>
-      <p style="font-size: 1.2rem; margin-bottom: 25px;">Trade XAUUSD with Smart Martingale, SL protection & profit targets — designed for real results.</p>
+      <h1 style="font-size: 2.5rem; font-weight: 700; margin-bottom: 15px;">💰 Automate Your Gold Trades<br>with <span style="color: #fff;">SK-ProfitMaker EA</span> 🚀</h1>
+      <p style="font-size: 1.2rem; margin-bottom: 25px; color: #eee;">Trade XAUUSD with Smart Martingale, SL protection & profit targets<br>— designed for real results.</p>
       <a href="https://t.me/Sunilmati007" target="_blank"
          style="background-color: #000; color: #fff; padding: 12px 30px; font-size: 1.1rem; font-weight: bold; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.3); display: inline-block; margin-bottom: 20px;">
         🚀 Get Started on Telegram
-      </a><br>
-      
-      <!-- 🤖 Robot Image -->
-      <img src="robot-icon.png" alt="EA Robot" style="max-width: 200px;">
+      </a>
+    </div>
+
+    <!-- 🔸 RIGHT: SK Logo with Card -->
+    <div style="flex: 1; text-align: center;">
+      <div style="background: radial-gradient(circle, #fff 20%, #fcb045 100%);
+                  padding: 20px;
+                  border-radius: 20px;
+                  display: inline-block;
+                  box-shadow: 0 0 20px rgba(0,0,0,0.4);">
+        <img src="logo.png" alt="SK Logo"
+             style="max-width: 280px; width: 100%;">
+      </div>
     </div>
 
   </div>
-</section>
 
+  <!-- 🤖 Bottom Robot Icon -->
+  <div style="text-align: center; margin-top: 40px;">
+    <img src="robot-icon.png" alt="EA Robot" style="max-width: 160px;">
+  </div>
+</section>
 
 
   
@@ -1000,8 +1101,26 @@ window.addEventListener('DOMContentLoaded', function () {
   }
 </script>
 
+
+<canvas id="confetti-canvas" style="position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:-1;"></canvas>
+<script src="https://cdn.jsdelivr.net/npm/confetti-js@0.0.18/dist/index.min.js"></script>
+<script>
+  const confettiSettings = { target: 'confetti-canvas', max: 150, size: 1.2, animate: true };
+  const confetti = new ConfettiGenerator(confettiSettings);
+  confetti.render();
+</script>
+
 </body>
 </html>
+
+
+<canvas id="confetti-canvas" style="position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:-1;"></canvas>
+<script src="https://cdn.jsdelivr.net/npm/confetti-js@0.0.18/dist/index.min.js"></script>
+<script>
+  const confettiSettings = { target: 'confetti-canvas', max: 150, size: 1.2, animate: true };
+  const confetti = new ConfettiGenerator(confettiSettings);
+  confetti.render();
+</script>
 
 </body>
 
