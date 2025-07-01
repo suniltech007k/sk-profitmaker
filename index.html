@@ -1071,26 +1071,37 @@ window.addEventListener('DOMContentLoaded', function () {
     document.getElementById("couponModal").style.display = "none";
   }
 
-  function applyCoupon() {
-    const code = document.getElementById("couponInput").value.trim();
-    const discountEl = document.getElementById("discountResult");
-    const continueBtn = document.getElementById("continueTelegramBtn");
+function applyCoupon() {
+  const code = document.getElementById("couponInput").value.trim();
+  const discountEl = document.getElementById("discountResult");
+  const continueBtn = document.getElementById("continueTelegramBtn");
 
-    if (code.toUpperCase() === "SK30OFF") {
-      const discounted = (originalPrice * 0.7).toFixed(2);
-      discountEl.innerText = `✅ Coupon Applied! Final Price: $${discounted}`;
-      continueBtn.style.display = "inline-block";
-      continueBtn.onclick = function () {
-        const message = `Hi, I want to buy the ${selectedPlan} plan using coupon SK30OFF. Final price: $${discounted}`;
-        const telegramURL = `https://t.me/Sunilmati007?text=${encodeURIComponent(message)}`;
-        window.open(telegramURL, "_blank");
-        closeCouponPopup();
-      };
-    } else {
-      discountEl.innerText = "❌ Invalid Coupon Code";
-      continueBtn.style.display = "none";
-    }
+  // ✅ Check expiry
+  const now = new Date();
+  const expiry = new Date("2025-06-30T20:45:59"); // Must match your real expiry
+
+  if (now > expiry) {
+    discountEl.innerText = "❌ Coupon expired!";
+    continueBtn.style.display = "none";
+    return;
   }
+
+  if (code.toUpperCase() === "SK30OFF") {
+    const discounted = (originalPrice * 0.7).toFixed(2);
+    discountEl.innerText = `✅ Coupon Applied! Final Price: $${discounted}`;
+    continueBtn.style.display = "inline-block";
+    continueBtn.onclick = function () {
+      const message = `Hi, I want to buy the ${selectedPlan} plan using coupon SK30OFF. Final price: $${discounted}`;
+      const telegramURL = `https://t.me/Sunilmati007?text=${encodeURIComponent(message)}`;
+      window.open(telegramURL, "_blank");
+      closeCouponPopup();
+    };
+  } else {
+    discountEl.innerText = "❌ Invalid Coupon Code";
+    continueBtn.style.display = "none";
+  }
+}
+
 
   function skipCoupon() {
     const message = `Hi, I want to buy the ${selectedPlan} plan without a coupon. Price: $${originalPrice}`;
