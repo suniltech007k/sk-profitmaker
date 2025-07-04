@@ -2,37 +2,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <style>
-.top-ticker {
-  width: 100%;
-  background: linear-gradient(90deg, #000, #444);
-  color: #ffcc00;
-  overflow: hidden;
-  white-space: nowrap;
-  position: fixed;
-  top: 0;
-  z-index: 9999;
-  padding: 8px 0;
-  font-weight: bold;
-  font-size: 1rem;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-}
-
-.ticker-content {
-  display: inline-block;
-  padding-left: 100%;
-  animation: scroll-left 20s linear infinite;
-}
-
-@keyframes scroll-left {
-  0% { transform: translateX(0%); }
-  100% { transform: translateX(-100%); }
-}
-
-body {
-  padding-top: 40px; /* Shift body down to avoid overlap */
-}
-
- 
   .flower {
     position: fixed;
     top: -50px;
@@ -429,11 +398,6 @@ window.addEventListener('DOMContentLoaded', function () {
   }
 });
 </script>
-<div class="top-ticker">
-  <div class="ticker-content" id="liveTicker">
-    ⏳ Fetching live gold price...
-  </div>
-</div>
 
 <body>
 <!-- ✅ Upgraded Hero Section: Logo Left, Robot Right -->
@@ -542,6 +506,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
   <section class="section" id="testimonials" data-aos="fade-up">
 
+<section class="section" data-aos="fade-right"> id="testimonials">
 
 <section style="text-align: center; padding: 60px 20px; background-color: #101010; color: white;">
   <h2 style="font-size: 2rem; margin-bottom: 20px;">📊 Verified Live Performance</h2>
@@ -918,7 +883,7 @@ window.addEventListener('DOMContentLoaded', function () {
 <a href="#" onclick="openModal('privacyContent')" style="color: #ff9c00; text-decoration: underline;">Privacy Policy</a>
 
 </div>
-<section class="section" data-aos="fade-right">
+<section class="section" data-aos="fade-right"> id="counters" style="background-color: #111; padding: 60px 20px;">
   <h2 style="color: #ff9c00;">Our Impact</h2>
   <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 40px; margin-top: 30px;">
     <div class="counter-box" style="text-align: center;">
@@ -1222,36 +1187,6 @@ function applyCoupon() {
   const confettiSettings = { target: 'confetti-canvas', max: 150, size: 1.2, animate: true };
   const confetti = new ConfettiGenerator(confettiSettings);
   confetti.render();
-</script>
-<script>
-  async function updateGoldPriceFromGoldAPI() {
-    const API_KEY = 'goldapi-1jry19mcoejxze-io';  // 🔑 Replace with your real API key
-    const url = 'https://www.goldapi.io/api/XAU/USD';
-
-    try {
-      const response = await fetch(url, {
-        headers: {
-          'x-access-token': API_KEY,
-          'Content-Type': 'application/json'
-        }
-      });
-
-      if (!response.ok) throw new Error("API error");
-
-      const data = await response.json();
-      const goldPrice = parseFloat(data.price).toFixed(2);
-
-      document.getElementById("liveTicker").innerText =
-        `💰 Gold Price: $${goldPrice}/oz | 💬 Telegram Support Available | ⏳ Limited-Time Offer Ends Soon!`;
-    } catch (err) {
-      console.error("Gold API fetch failed:", err);
-      document.getElementById("liveTicker").innerText =
-        `⚠️ Live Price Unavailable | 💬 Telegram Support Available | ⏳ Offer Ending Soon!`;
-    }
-  }
-
-  updateGoldPriceFromGoldAPI();
-  setInterval(updateGoldPriceFromGoldAPI, 5 * 60 * 1000); // every 5 minutes
 </script>
 
 </body>
