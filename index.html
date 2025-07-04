@@ -301,8 +301,10 @@ body::before {
   background-size: 400% 400%;
   animation: gradientFlow 10s ease infinite;
   color: black;
-  padding: 80px 20px;
+  padding: 40px 20px;
+  clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
 }
+
 @keyframes gradientFlow {
   0% {background-position: 0% 50%;}
   50% {background-position: 100% 50%;}
