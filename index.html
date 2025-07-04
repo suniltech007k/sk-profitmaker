@@ -28,8 +28,10 @@
   100% { transform: translateX(-100%); }
 }
 
-body {
-  padding-top: 40px; /* Shift body down to avoid overlap */
+@media (max-width: 600px) {
+  body {
+    padding-top: 50px;
+  }
 }
 
  
