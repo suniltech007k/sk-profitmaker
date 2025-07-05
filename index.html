@@ -1096,39 +1096,6 @@ function applyCoupon() {
     document.getElementById('normal-banner').style.display = 'none';
   }
 </script>
-<script>
-  const now = new Date();
-  const expiry = new Date(siteConfig.offerExpiry);
-
-  if (now < expiry) {
-    startFlowerRain(); // 🌸 Barsaat shuru karo
-  }
-
-  function startFlowerRain() {
-    const flowers = ["🌸", "🌺", "🌷", "💐", "🌹", "🌼"];
-    const interval = setInterval(() => {
-      const flower = document.createElement("div");
-      flower.classList.add("flower");
-      flower.innerText = flowers[Math.floor(Math.random() * flowers.length)];
-      flower.style.left = Math.random() * 100 + "vw";
-      flower.style.animationDuration = (3 + Math.random() * 2) + "s";
-      flower.style.fontSize = (20 + Math.random() * 20) + "px";
-
-      document.body.appendChild(flower);
-
-      setTimeout(() => {
-        flower.remove();
-      }, 5000);
-    }, 300);
-    
-    // Stop animation after offer expires
-    const timeout = expiry - new Date();
-    setTimeout(() => {
-      clearInterval(interval);
-    }, timeout);
-  }
-</script>
-
 
 <canvas id="confetti-canvas" style="position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:-1;"></canvas>
 <script src="https://cdn.jsdelivr.net/npm/confetti-js@0.0.18/dist/index.min.js"></script>
