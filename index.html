@@ -548,68 +548,14 @@ window.addEventListener('DOMContentLoaded', function () {
 
 
 <!-- 🔥 Limited-Time Offer Banner with Countdown -->
-<section id="weekendOffer" style="background: linear-gradient(90deg, #ff4e00, #ff9c00); color: #000; text-align: center; padding: 25px 20px; font-weight: bold; font-size: 1.2rem;">
-  Loading offer details...
+<section style="background: linear-gradient(90deg, #ff4e00, #ff9c00); color: #000; text-align: center; padding: 25px 20px; font-weight: bold; font-size: 1.2rem;">
+  🎉 Limited-Time Offer: <span style="color: #fff;">10% OFF</span> on all plans! Use code <span style="color: #000; background: #fff; padding: 5px 10px; border-radius: 5px;">SK10OFF</span>
+  <br />
+  ⏳ Offer expires in: <span id="countdown" style="color: #fff;"></span>
 </section>
 
 <script>
-// Manual Date Based Offer Activation
-const manualOfferDate = ""; // Example: "2025-07-15"
-
-const offerSection = document.getElementById("weekendOffer");
-const today = new Date();
-const day = today.getDay();
-const todayDateStr = today.toISOString().split('T')[0];
-
-const offerEndDate = new Date();
-offerEndDate.setHours(23, 59, 59, 999);
-
-function updateWeekendOffer() {
-  if (todayDateStr === manualOfferDate || day === 6 || day === 0) {
-    offerSection.innerHTML = `
-      🎉 Special Sale Live: <span style="color: #fff;">10% OFF</span> on all plans! Use code <span style="color: #000; background: #fff; padding: 5px 10px; border-radius: 5px;">SK10OFF</span>
-      <br />
-      ⏳ Offer ends in: <span id="weekendCountdown" style="color: #fff;"></span>
-    `;
-    offerSection.style.display = "block";
-    startCountdown();
-  } else {
-    offerSection.innerHTML = `
-      🔒 Offer Closed: <span style="color: #fff;">Next Sale starts Saturday & Sunday</span>. Stay tuned!
-    `;
-    offerSection.style.display = "block";
-  }
-}
-
-function startCountdown() {
-  const countdownEl = document.getElementById("weekendCountdown");
-
-  function updateCountdown() {
-    const now = new Date();
-    const diff = offerEndDate - now;
-
-    if (diff <= 0) {
-      countdownEl.innerText = "EXPIRED";
-      return;
-    }
-
-    const hrs = Math.floor((diff / (1000 * 60 * 60)) % 24);
-    const mins = Math.floor((diff / (1000 * 60)) % 60);
-    const secs = Math.floor((diff / 1000) % 60);
-
-    countdownEl.innerText = `${hrs}h ${mins}m ${secs}s`;
-  }
-
-  setInterval(updateCountdown, 1000);
-  updateCountdown();
-}
-
-updateWeekendOffer();
-</script>
-
-  
-<script>
-
+  const countdown = document.getElementById("countdown");
 
   // ✅ Apni offer ki expiry date yahan set karo:
   const endDate = new Date("2025-07-10T20:45:59"); // Format: YYYY-MM-DDTHH:MM:SS
@@ -635,34 +581,6 @@ updateWeekendOffer();
   updateCountdown();
 </script>
 
-<script>
-// Weekend Coupon Auto Activation
-const today = new Date();
-const day = today.getDay(); // 0=Sunday, 6=Saturday
-
-// Offer Banner Text Element
-const offerSection = document.querySelector('section[style*="background: linear-gradient(90deg, #ff4e00"]');
-
-function updateOfferDisplay() {
-  if (day === 0 || day === 6) {
-    // Saturday or Sunday -> Offer Active
-    offerSection.style.display = "block";
-    offerSection.innerHTML = `
-    🎉 Weekend Sale Live: <span style="color: #fff;">10% OFF</span> on all plans! Use code <span style="color: #000; background: #fff; padding: 5px 10px; border-radius: 5px;">SK10OFF</span>
-    <br />
-    ⏳ Offer ends Sunday Midnight!
-    `;
-  } else {
-    // Weekdays -> Offer Closed but message shows
-    offerSection.style.display = "block";
-    offerSection.innerHTML = `
-    🔒 Offer Closed: <span style="color: #fff;">Next Sale starts Saturday & Sunday</span>. Stay tuned!
-    `;
-  }
-}
-
-updateOfferDisplay();
-</script>
 
  
     <h2 style="font-size: 2rem; margin-bottom: 30px;">Choose Your Plan</h2>
