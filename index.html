@@ -581,6 +581,34 @@ window.addEventListener('DOMContentLoaded', function () {
   updateCountdown();
 </script>
 
+<script>
+// Weekend Coupon Auto Activation
+const today = new Date();
+const day = today.getDay(); // 0=Sunday, 6=Saturday
+
+// Offer Banner Text Element
+const offerSection = document.querySelector('section[style*="background: linear-gradient(90deg, #ff4e00"]');
+
+function updateOfferDisplay() {
+  if (day === 0 || day === 6) {
+    // Saturday or Sunday -> Offer Active
+    offerSection.style.display = "block";
+    offerSection.innerHTML = `
+    🎉 Weekend Sale Live: <span style="color: #fff;">10% OFF</span> on all plans! Use code <span style="color: #000; background: #fff; padding: 5px 10px; border-radius: 5px;">SK10OFF</span>
+    <br />
+    ⏳ Offer ends Sunday Midnight!
+    `;
+  } else {
+    // Weekdays -> Offer Closed but message shows
+    offerSection.style.display = "block";
+    offerSection.innerHTML = `
+    🔒 Offer Closed: <span style="color: #fff;">Next Sale starts Saturday & Sunday</span>. Stay tuned!
+    `;
+  }
+}
+
+updateOfferDisplay();
+</script>
 
  
     <h2 style="font-size: 2rem; margin-bottom: 30px;">Choose Your Plan</h2>
