@@ -547,25 +547,23 @@ window.addEventListener('DOMContentLoaded', function () {
 </section>
 
 
-<!-- Weekend Offer Banner -->
+<!-- Weekend / Manual Offer Banner -->
 <section id="weekendOffer" style="display:none; background: linear-gradient(90deg, #ff4e00, #ff9c00); color: #000; text-align: center; padding: 25px 20px; font-weight: bold; font-size: 1.2rem;">
   🎉 Limited-Time Offer: <span style="color: #fff;">10% OFF</span> — Use code <span style="color: #000; background: #fff; padding: 5px 10px; border-radius: 5px;">SK10OFF</span>
   <br />
   ⏳ Offer ends in: <span id="weekendCountdown" style="color: #fff;"></span>
 </section>
 
-<!-- Next Sale Info Banner -->
+<!-- Next Sale Info Banner for weekdays -->
 <section id="nextSaleBanner" style="display:none; background: linear-gradient(90deg, #fff7c5, #ffe066); color: #111; text-align: center; padding: 25px 20px; font-weight: bold; font-size: 1.1rem;">
   🛒 Next Sale: <strong>Saturday & Sunday</strong> — 10% OFF with code <span style="color: red;">SK10OFF</span>
 </section>
 
-
 <script>
- <script>
-// ✅ Manual Offer Start & End Date Setup
-// Leave blank for no manual override
-const manualOfferStart = "";   // Example: "2025-07-15T08:00:00"
-const manualOfferEnd = "";     // Example: "2025-07-15T23:59:59"
+// ✅ Manual Offer Start & End Date (If blank, only weekend auto works)
+// Format Example: "2025-07-15T08:00:00"
+const manualOfferStart = ""; 
+const manualOfferEnd = "";   
 
 function checkOfferSystem() {
   const now = new Date();
@@ -589,7 +587,6 @@ function checkOfferSystem() {
   }
 
   if (!offerActive && (day === 6 || day === 0)) {
-    // Weekend Auto Offer
     offerActive = true;
     offerEndDate = new Date();
     offerEndDate.setDate(offerEndDate.getDate() + (day === 6 ? 1 : 0));
@@ -630,7 +627,6 @@ function checkOfferSystem() {
 window.addEventListener('DOMContentLoaded', checkOfferSystem);
 </script>
 
-</script>
 
 
  
