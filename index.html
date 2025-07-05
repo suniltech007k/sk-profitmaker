@@ -95,17 +95,35 @@
 <head>
  <script>
   const siteConfig = {
-    telegramID: "t.me/Sunilmati007",
+    telegramID: "https://t.me/Sunilmati007",
     videoURL: "https://www.youtube.com/embed/ATjIJEm57jg",
-    prices: {
-      "1 Month": 25,
-      "3 Months": 70,
-      "6 Months": 130,
-      "Lifetime": 599
+    
+    prices: [
+      { plan: "1 Month", price: 25 },
+      { plan: "3 Months", price: 70 },
+      { plan: "6 Months", price: 130 },
+      { plan: "Lifetime", price: 599 }
+    ],
+
+    coupon: {
+      code: "SK10OFF",
+      discountPercent: 10,
+      expiry: "2025-07-30T23:59:59"
     },
-    couponCode: "SK10OFF",
-    offerExpiry: "2025-07-30T23:59:59",
-    couponDiscount: 0.1,
+
+    stats: {
+      users: 3,
+      monthlyTrades: 194,
+      uptimeMonths: 6
+    },
+
+    socialLinks: {
+      facebook: "https://facebook.com/suniltech007k",
+      instagram: "https://instagram.com/suniltech007k",
+      telegram: "https://t.me/Sunilmati007",
+      youtube: "https://youtube.com/@suniltech8774"
+    },
+
     testimonials: [
       {
         name: "Manohar Gangwar, JaamNagar",
@@ -114,24 +132,73 @@
       {
         name: "Rahul Sharma, Vadodara",
         text: "Very beginner-friendly and powerful. Within the first month, I saw consistent results, and the support via Telegram is top-notch."
+      },
+      {
+        name: "Akash Badoniya, Baitul",
+        text: "Tried multiple EAs before, but this is the only one that balanced profit with safety. The Martingale settings are smarter than I expected."
       }
     ],
+
     backtestImages: [
       { month: "January", src: "jan-2025.png" },
       { month: "February", src: "feb-2025.png" },
       { month: "March", src: "mar-2025.png" },
       { month: "April", src: "apr-2025.png" },
       { month: "May", src: "may-2025.png" },
-     { month: "June", src: "jun-2025.png" }
+      { month: "June", src: "jun-2025.png" }
     ],
-    impact: {
-      users: 3,
-      profits: 194,
-      uptime: 6
-    }
+
+    features: [
+      "Smart Martingale Strategy",
+      "Signal Control with Manual Override",
+      "Multiple Stop Loss Options",
+      "Auto-Close Profit Feature",
+      "Capital Risk Control",
+      "Real-time Telegram Alerts",
+      "Interactive Dashboard Interface",
+      "Drawdown Protection Mechanism",
+      "Trailing & Timed Stop-Loss",
+      "Daily & Monthly Profit Booking"
+    ],
+
+    benefits: [
+      "📄 Easy setup guide (PDF) — beginner friendly",
+      "📲 Direct Telegram support for life",
+      "💸 Smart Profit-Maker strategy with SL protection",
+      "⚡ Auto trade XAUUSD on 1-minute chart",
+      "🎯 50% OFF via Exness referral link — no coupon needed",
+      "📶 Access to paid Telegram signal channel",
+      "🛠️ Online EA setup help (FREE)",
+      "🛒 Bundle offers: EA + Guide + Setup",
+      "🎥 Step-by-step YouTube tutorials to learn & earn"
+    ],
+
+    faqs: [
+      {
+        q: "What is SK-ProfitMaker EA?",
+        a: "It's an automated trading software for MT4 with martingale, SL, capital protection and more."
+      },
+      {
+        q: "Do I need trading experience?",
+        a: "No. It's beginner-friendly and comes with video guides and Telegram support."
+      },
+      {
+        q: "Can I use it on MT5?",
+        a: "Currently only MT4 is supported. MT5 version may be released later."
+      },
+      {
+        q: "Is there a refund policy?",
+        a: "No. Being digital software, we do not offer refunds. Please understand terms before buying."
+      },
+      {
+        q: "What capital is required?",
+        a: "Recommended minimum is $500."
+      }
+    ]
   };
 </script>
 
+  
   <meta name="title" content="SK-ProfitMaker EA - Smart Forex Trading Robot for XAUUSD">
 <meta name="description" content="Trade XAUUSD 1-minute with smart martingale, SL protection & profit targets. Used by 350+ traders.">
 <meta name="keywords" content="forex robot, gold ea, xauusd bot, mt4 trading bot, profitmaker ea, sunil ea">
