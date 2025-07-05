@@ -1078,66 +1078,74 @@ window.addEventListener('DOMContentLoaded', checkOfferSystem);
     <p id="discountResult" style="font-size:1.1rem;"></p>
     
     <button id="continueTelegramBtn" style="display:none; background:#25D366; color:#fff; padding:10px 15px; border:none; border-radius:6px; margin-top:10px; width:100%; cursor:pointer;">Continue to Telegram</button>
+    <button id="exnessExtraBtn" style="display:none; background:#ff4e00; color:#fff; padding:10px 15px; border:none; border-radius:6px; margin-top:10px; width:100%; cursor:pointer;">
+Get Extra 10% Off with Exness Signup
+</button>
+
     <button onclick="skipCoupon()" style="margin-top:10px; background-color: transparent; color: #ff9c00; border: 1px solid #ff9c00; padding: 10px 15px; border-radius:6px; width:100%; cursor:pointer;">Skip & Continue Without Coupon</button>
   </div>
 </div>
 
 <script>
-  let originalPrice = 0;
-  let selectedPlan = '';
+ let originalPrice = 0;
+let selectedPlan = '';
 
-  function openCouponPopup(plan, price) {
-    document.getElementById("couponModal").style.display = "flex";
-    document.getElementById("selectedPlan").innerText = `Plan: ${plan} | Original Price: $${price}`;
-    document.getElementById("discountResult").innerText = '';
-    document.getElementById("couponInput").value = '';
-    document.getElementById("continueTelegramBtn").style.display = "none";
-    selectedPlan = plan;
-    originalPrice = price;
-  }
+function openCouponPopup(plan, price) {
+  document.getElementById("couponModal").style.display = "flex";
+  document.getElementById("selectedPlan").innerText = `Plan: ${plan} | Original Price: $${price}`;
+  document.getElementById("discountResult").innerText = '';
+  document.getElementById("couponInput").value = '';
+  document.getElementById("continueTelegramBtn").style.display = "none";
+  document.getElementById("exnessExtraBtn").style.display = "none";
+  selectedPlan = plan;
+  originalPrice = price;
+}
 
-  function closeCouponPopup() {
-    document.getElementById("couponModal").style.display = "none";
-  }
+function closeCouponPopup() {
+  document.getElementById("couponModal").style.display = "none";
+}
 
 function applyCoupon() {
   const code = document.getElementById("couponInput").value.trim();
   const discountEl = document.getElementById("discountResult");
   const continueBtn = document.getElementById("continueTelegramBtn");
-
-  // ✅ Check expiry
-  const now = new Date();
-  const expiry = new Date("2025-07-10T20:45:59"); // Must match your real expiry
-
-  if (now > expiry) {
-    discountEl.innerText = "❌ Coupon expired!";
-    continueBtn.style.display = "none";
-    return;
-  }
+  const exnessBtn = document.getElementById("exnessExtraBtn");
 
   if (code.toUpperCase() === "SK10OFF") {
     const discounted = (originalPrice * 0.9).toFixed(2);
     discountEl.innerText = `✅ Coupon Applied! Final Price: $${discounted}`;
     continueBtn.style.display = "inline-block";
+    exnessBtn.style.display = "inline-block";
+
     continueBtn.onclick = function () {
-      const message = `Hi, I want to buy the ${selectedPlan} plan using coupon SK30OFF. Final price: $${discounted}`;
+      const message = `Hi, I want to buy the ${selectedPlan} plan using coupon SK10OFF. Final price: $${discounted}`;
       const telegramURL = `https://t.me/Sunilmati007?text=${encodeURIComponent(message)}`;
       window.open(telegramURL, "_blank");
       closeCouponPopup();
     };
+
+    exnessBtn.onclick = function () {
+      const exnessPrice = (discounted * 0.9).toFixed(2);
+      const message = `Hi, I want to buy the ${selectedPlan} plan with Exness Signup. Final price after extra 10% off: $${exnessPrice}`;
+      const telegramURL = `https://t.me/Sunilmati007?text=${encodeURIComponent(message)}`;
+      window.open(telegramURL, "_blank");
+      closeCouponPopup();
+    };
+
   } else {
     discountEl.innerText = "❌ Invalid Coupon Code";
     continueBtn.style.display = "none";
+    exnessBtn.style.display = "none";
   }
 }
 
+function skipCoupon() {
+  const message = `Hi, I want to buy the ${selectedPlan} plan without a coupon. Price: $${originalPrice}`;
+  const telegramURL = `https://t.me/Sunilmati007?text=${encodeURIComponent(message)}`;
+  window.open(telegramURL, "_blank");
+  closeCouponPopup();
+}
 
-  function skipCoupon() {
-    const message = `Hi, I want to buy the ${selectedPlan} plan without a coupon. Price: $${originalPrice}`;
-    const telegramURL = `https://t.me/Sunilmati007?text=${encodeURIComponent(message)}`;
-    window.open(telegramURL, "_blank");
-    closeCouponPopup();
-  }
 </script>
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
