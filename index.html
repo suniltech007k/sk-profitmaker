@@ -542,12 +542,11 @@ window.addEventListener('DOMContentLoaded', function () {
 </section>
 
 <!-- Zoom Modal -->
-<div id="zoomModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.9); z-index:9999; display:flex; justify-content:center; align-items:center;">
-<img id="zoomedImage" src="" style="max-width:90%; max-height:90%; object-fit: contain;" />
+<div id="zoomModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.9); justify-content:center; align-items:center; z-index:9999;">
   <span onclick="document.getElementById('zoomModal').style.display='none'" style="position:absolute;top:20px;right:30px;font-size:30px;color:white;cursor:pointer;">&times;</span>
   <img id="zoomedImage" src="" style="max-width:90%; max-height:90%;" />
 </div>
-<section class="section" style="background-color: #141414;" data-aos="fade-left">
+<section class="section" style="background-color: #141414; padding: 50px 20px;">
   <h2 style="color: #ff9c00; margin-bottom: 30px;">Trusted & Secure</h2>
   <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 30px;">
     <div style="background-color: #1e1e1e; padding: 20px; border-radius: 12px; text-align: center; width: 180px; box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);">
