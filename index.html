@@ -547,38 +547,69 @@ window.addEventListener('DOMContentLoaded', function () {
 </section>
 
 
-<!-- 🔥 Limited-Time Offer Banner with Countdown -->
-<section style="background: linear-gradient(90deg, #ff4e00, #ff9c00); color: #000; text-align: center; padding: 25px 20px; font-weight: bold; font-size: 1.2rem;">
-  🎉 Limited-Time Offer: <span style="color: #fff;">10% OFF</span> on all plans! Use code <span style="color: #000; background: #fff; padding: 5px 10px; border-radius: 5px;">SK10OFF</span>
+<!-- 🔥 Weekend Offer Banner with Countdown -->
+<section id="weekendOffer" style="display:none; background: linear-gradient(90deg, #ff4e00, #ff9c00); color: #000; text-align: center; padding: 25px 20px; font-weight: bold; font-size: 1.2rem;">
+  🎉 Weekend Special: <span style="color: #fff;">10% OFF</span> on all plans! Use code <span style="color: #000; background: #fff; padding: 5px 10px; border-radius: 5px;">SK10OFF</span>
   <br />
-  ⏳ Offer expires in: <span id="countdown" style="color: #fff;"></span>
+  ⏳ Offer ends in: <span id="weekendCountdown" style="color: #fff;"></span>
 </section>
 
+<!-- 🔔 Next Sale Banner for Weekdays -->
+<section id="nextSaleBanner" style="display:none; background: linear-gradient(90deg, #fff7c5, #ffe066); color: #111; text-align: center; padding: 25px 20px; font-weight: bold; font-size: 1.1rem;">
+  🛒 Next Sale: <strong>Saturday & Sunday</strong> — 10% OFF with code <span style="color: red;">SK10OFF</span>
+</section>
+
+
 <script>
-  const countdown = document.getElementById("countdown");
+ // Weekend Offer Logic
+function checkWeekendOffer() {
+  const now = new Date();
+  const day = now.getDay(); // Sunday = 0, Monday = 1, ..., Saturday = 6
 
-  // ✅ Apni offer ki expiry date yahan set karo:
-  const endDate = new Date("2025-07-10T20:45:59"); // Format: YYYY-MM-DDTHH:MM:SS
+  const offerSection = document.getElementById('weekendOffer');
+  const countdown = document.getElementById('weekendCountdown');
+  const nextSaleBanner = document.getElementById('nextSaleBanner');
 
-  function updateCountdown() {
-    const now = new Date();
-    const diff = endDate - now;
+  if (day === 6 || day === 0) {
+    // Show Offer
+    offerSection.style.display = 'block';
+    nextSaleBanner.style.display = 'none';
 
-    if (diff <= 0) {
-      countdown.innerText = "EXPIRED";
-      return;
+    // Set Offer End Time (Sunday 23:59:59)
+    const endDate = new Date();
+    endDate.setDate(endDate.getDate() + (day === 6 ? 1 : 0));
+    endDate.setHours(23, 59, 59, 999);
+
+    function updateCountdown() {
+      const now = new Date();
+      const diff = endDate - now;
+
+      if (diff <= 0) {
+        countdown.innerText = "EXPIRED";
+        offerSection.style.display = "none";
+        nextSaleBanner.style.display = "block";
+        return;
+      }
+
+      const hrs = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const mins = Math.floor((diff / 1000 / 60) % 60);
+      const secs = Math.floor((diff / 1000) % 60);
+
+      countdown.innerText = `${hrs}h ${mins}m ${secs}s`;
     }
 
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const hrs = Math.floor((diff / (1000 * 60 * 60)) % 24);
-    const mins = Math.floor((diff / 1000 / 60) % 60);
-    const secs = Math.floor((diff / 1000) % 60);
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
 
-    countdown.innerText = `${days}d ${hrs}h ${mins}m ${secs}s`;
+  } else {
+    // Show Next Sale Info
+    offerSection.style.display = 'none';
+    nextSaleBanner.style.display = 'block';
   }
+}
 
-  setInterval(updateCountdown, 1000);
-  updateCountdown();
+window.addEventListener('DOMContentLoaded', checkWeekendOffer);
+
 </script>
 
 
