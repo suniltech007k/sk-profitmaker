@@ -547,84 +547,74 @@ window.addEventListener('DOMContentLoaded', function () {
 </section>
 
 
-<script>
-<!-- 🔥 Weekend Offer Banner with Countdown -->
+<!-- Weekend Offer Banner -->
 <section id="weekendOffer" style="display:none; background: linear-gradient(90deg, #ff4e00, #ff9c00); color: #000; text-align: center; padding: 25px 20px; font-weight: bold; font-size: 1.2rem;">
-  🎉 Weekend Special: <span style="color: #fff;">10% OFF</span> on all plans! Use code <span style="color: #000; background: #fff; padding: 5px 10px; border-radius: 5px;">SK10OFF</span>
+  🎉 Limited-Time Offer: <span style="color: #fff;">10% OFF</span> — Use code <span style="color: #000; background: #fff; padding: 5px 10px; border-radius: 5px;">SK10OFF</span>
   <br />
   ⏳ Offer ends in: <span id="weekendCountdown" style="color: #fff;"></span>
 </section>
 
-<!-- 🔔 Next Sale Banner for Weekdays -->
+<!-- Next Sale Info Banner -->
 <section id="nextSaleBanner" style="display:none; background: linear-gradient(90deg, #fff7c5, #ffe066); color: #111; text-align: center; padding: 25px 20px; font-weight: bold; font-size: 1.1rem;">
   🛒 Next Sale: <strong>Saturday & Sunday</strong> — 10% OFF with code <span style="color: red;">SK10OFF</span>
 </section>
 
-<script>
-// Manual Control System
-let manualOverride = false;      // true = Manual Mode ON
-let manualOfferStart = "2025-07-12T10:00:00"; // Start Date-Time
-tlet manualOfferEnd = "2025-07-12T23:59:00";   // End Date-Time
 
-function checkWeekendOffer() {
+<script>
+ <script>
+// ✅ Manual Offer Start & End Date Setup
+// Leave blank for no manual override
+const manualOfferStart = "";   // Example: "2025-07-15T08:00:00"
+const manualOfferEnd = "";     // Example: "2025-07-15T23:59:59"
+
+function checkOfferSystem() {
   const now = new Date();
-  const day = now.getDay(); // Sunday = 0, Monday = 1, ..., Saturday = 6
+  const day = now.getDay();  // Sunday = 0, Monday = 1, ..., Saturday = 6
 
   const offerSection = document.getElementById('weekendOffer');
   const countdown = document.getElementById('weekendCountdown');
   const nextSaleBanner = document.getElementById('nextSaleBanner');
 
-  if (manualOverride) {
+  let offerActive = false;
+  let offerEndDate = null;
+
+  if (manualOfferStart && manualOfferEnd) {
     const start = new Date(manualOfferStart);
     const end = new Date(manualOfferEnd);
 
     if (now >= start && now <= end) {
-      offerSection.style.display = 'block';
-      nextSaleBanner.style.display = 'none';
-
-      function updateManualCountdown() {
-        const diff = end - new Date();
-        if (diff <= 0) {
-          countdown.innerText = "EXPIRED";
-          offerSection.style.display = "none";
-          nextSaleBanner.style.display = "block";
-          return;
-        }
-        const hrs = Math.floor((diff / (1000 * 60 * 60)) % 24);
-        const mins = Math.floor((diff / 1000 / 60) % 60);
-        const secs = Math.floor((diff / 1000) % 60);
-        countdown.innerText = `${hrs}h ${mins}m ${secs}s`;
-      }
-
-      setInterval(updateManualCountdown, 1000);
-      updateManualCountdown();
-
-    } else {
-      offerSection.style.display = 'none';
-      nextSaleBanner.style.display = 'block';
+      offerActive = true;
+      offerEndDate = end;
     }
-    return;
   }
 
-  if (day === 6 || day === 0) {
+  if (!offerActive && (day === 6 || day === 0)) {
+    // Weekend Auto Offer
+    offerActive = true;
+    offerEndDate = new Date();
+    offerEndDate.setDate(offerEndDate.getDate() + (day === 6 ? 1 : 0));
+    offerEndDate.setHours(23, 59, 59, 999);
+  }
+
+  if (offerActive) {
     offerSection.style.display = 'block';
     nextSaleBanner.style.display = 'none';
 
-    const endDate = new Date();
-    endDate.setDate(endDate.getDate() + (day === 6 ? 1 : 0));
-    endDate.setHours(23, 59, 59, 999);
-
     function updateCountdown() {
-      const diff = endDate - new Date();
+      const now = new Date();
+      const diff = offerEndDate - now;
+
       if (diff <= 0) {
         countdown.innerText = "EXPIRED";
         offerSection.style.display = "none";
         nextSaleBanner.style.display = "block";
         return;
       }
+
       const hrs = Math.floor((diff / (1000 * 60 * 60)) % 24);
       const mins = Math.floor((diff / 1000 / 60) % 60);
       const secs = Math.floor((diff / 1000) % 60);
+
       countdown.innerText = `${hrs}h ${mins}m ${secs}s`;
     }
 
@@ -637,10 +627,13 @@ function checkWeekendOffer() {
   }
 }
 
-window.addEventListener('DOMContentLoaded', checkWeekendOffer);
+window.addEventListener('DOMContentLoaded', checkOfferSystem);
+</script>
+
 </script>
 
 
+ 
     <h2 style="font-size: 2rem; margin-bottom: 30px;">Choose Your Plan</h2>
     <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
 
