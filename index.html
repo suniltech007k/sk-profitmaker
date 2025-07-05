@@ -1,4 +1,3 @@
- 
 <!DOCTYPE html>
 <html lang="en">
 <style>
@@ -550,7 +549,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
 <!-- 🔥 Limited-Time Offer Banner with Countdown -->
 <section style="background: linear-gradient(90deg, #ff4e00, #ff9c00); color: #000; text-align: center; padding: 25px 20px; font-weight: bold; font-size: 1.2rem;">
-  🎉 Limited-Time Offer: <span style="color: #fff;">30% OFF</span> on all plans! Use code <span style="color: #000; background: #fff; padding: 5px 10px; border-radius: 5px;">SK30OFF</span>
+  🎉 Limited-Time Offer: <span style="color: #fff;">10% OFF</span> on all plans! Use code <span style="color: #000; background: #fff; padding: 5px 10px; border-radius: 5px;">SK10OFF</span>
   <br />
   ⏳ Offer expires in: <span id="countdown" style="color: #fff;"></span>
 </section>
@@ -1044,7 +1043,7 @@ function applyCoupon() {
 
   // ✅ Check expiry
   const now = new Date();
-  const expiry = new Date("2025-06-30T20:45:59"); // Must match your real expiry
+  const expiry = new Date("2025-07-10T20:45:59"); // Must match your real expiry
 
   if (now > expiry) {
     discountEl.innerText = "❌ Coupon expired!";
@@ -1052,8 +1051,8 @@ function applyCoupon() {
     return;
   }
 
-  if (code.toUpperCase() === "SK30OFF") {
-    const discounted = (originalPrice * 0.7).toFixed(2);
+  if (code.toUpperCase() === "SK10OFF") {
+    const discounted = (originalPrice * 0.9).toFixed(2);
     discountEl.innerText = `✅ Coupon Applied! Final Price: $${discounted}`;
     continueBtn.style.display = "inline-block";
     continueBtn.onclick = function () {
