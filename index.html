@@ -1122,9 +1122,10 @@ window.addEventListener('DOMContentLoaded', checkOfferSystem);
     <p id="discountResult" style="font-size:1.1rem;"></p>
     
     <button id="continueTelegramBtn" style="display:none; background:#25D366; color:#fff; padding:10px 15px; border:none; border-radius:6px; margin-top:10px; width:100%; cursor:pointer;">Continue to Telegram</button>
-    <button id="exnessExtraBtn" style="display:none; background:#ff4e00; color:#fff; padding:10px 15px; border:none; border-radius:6px; margin-top:10px; width:100%; cursor:pointer;">
+    <button id="exnessExtraBtn" style="background:#ff4e00; color:#fff; padding:10px 15px; border:none; border-radius:6px; margin-top:10px; width:100%; cursor:pointer;">
 If Signuped with Exness link then Get Extra 10% Off 
 </button>
+
 
     <button onclick="skipCoupon()" style="margin-top:10px; background-color: transparent; color: #ff9c00; border: 1px solid #ff9c00; padding: 10px 15px; border-radius:6px; width:100%; cursor:pointer;">Skip & Continue Without Coupon</button>
   </div>
@@ -1140,10 +1141,21 @@ function openCouponPopup(plan, price) {
   document.getElementById("discountResult").innerText = '';
   document.getElementById("couponInput").value = '';
   document.getElementById("continueTelegramBtn").style.display = "none";
-  document.getElementById("exnessExtraBtn").style.display = "none";
   selectedPlan = plan;
   originalPrice = price;
+
+  // ✅ Always enable Exness button
+  const exnessBtn = document.getElementById("exnessExtraBtn");
+  exnessBtn.style.display = "inline-block";
+  exnessBtn.onclick = function () {
+    const exnessPrice = (originalPrice * 0.9).toFixed(2);  // 10% off on original
+    const message = `Hi, I want to buy the ${selectedPlan} plan with Exness Signup. Final price after extra 10% off: $${exnessPrice}`;
+    const telegramURL = `https://t.me/SK_ProfitMaker_EA?text=${encodeURIComponent(message)}`;
+    window.open(telegramURL, "_blank");
+    closeCouponPopup();
+  };
 }
+
 
 function closeCouponPopup() {
   document.getElementById("couponModal").style.display = "none";
