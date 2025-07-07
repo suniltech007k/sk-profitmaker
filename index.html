@@ -3,6 +3,23 @@
 <style>
   .logo-3d {
   width: 280px;
+  perspective: 1000px;
+}
+
+.logo-3d img {
+  width: 100%;
+  display: block;
+  animation: rotateLogo 5s linear infinite;
+  transform-style: preserve-3d;
+}
+
+@keyframes rotateLogo {
+  0% { transform: rotateY(0deg); }
+  100% { transform: rotateY(180deg); }
+}
+
+  .logo-3d {
+  width: 280px;
   height: auto;
   margin: 0 auto;
   perspective: 1000px;
@@ -400,13 +417,12 @@ window.addEventListener('DOMContentLoaded', function () {
 <section class="hero" data-aos="fade-up" style="display: flex; align-items: center; min-height: 420px;">
   <div class="container" style="max-width: 1200px; margin: auto; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 40px;">
 
-    <!-- ✅ LEFT: SK Logo -->
-<div style="flex: 1; text-align: center;">
-<div class="logo-3d">
-  <img src="logo.png" alt="SK Logo" />
+<!-- ✅ LEFT: SK Logo -->
+<div style="flex: 1; display: flex; justify-content: center; align-items: center;">
+  <div class="logo-3d">
+    <img src="logo.png" alt="SK Logo" />
+  </div>
 </div>
-
-
 
 
     <!-- ✅ RIGHT: Headline + CTA + Robot -->
