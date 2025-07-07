@@ -62,16 +62,6 @@
   0%, 100% { filter: drop-shadow(0 0 8px #ffae00); }
   50% { filter: drop-shadow(0 0 20px #ff0000); }
 }
-.logo-border {
-  padding: 10px;
-  border: 5px solid;
-  border-image: linear-gradient(45deg, #ff9c00, #f00000, #ff9c00) 1;
-  animation: borderAnim 5s linear infinite;
-}
-@keyframes borderAnim {
-  0% {border-image-slice: 1;}
-  100% {border-image-slice: 1;}
-}
 
 
 @media (max-width: 768px) {
@@ -391,7 +381,8 @@ window.addEventListener('DOMContentLoaded', function () {
 
     <!-- ✅ LEFT: SK Logo -->
     <div style="flex: 1; text-align: center;">
-      <img src="logo.png" alt="SK Logo" class="logo-border"
+   <img src="logo.png" alt="SK Logo"
+
            style="max-width: 90%; height: auto; margin: 0 auto 20px auto; display: block; box-shadow: 0 0 12px rgba(0,0,0,0.3); border-radius: 12px;">
     </div>
 
