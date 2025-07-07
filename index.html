@@ -1141,9 +1141,24 @@ function openCouponPopup(plan, price) {
   document.getElementById("couponInput").value = '';
   document.getElementById("continueTelegramBtn").style.display = "none";
   document.getElementById("exnessExtraBtn").style.display = "none";
+
   selectedPlan = plan;
   originalPrice = price;
+
+  // ✅ Show Exness Button if NO sale is active
+  const saleRunning = document.getElementById("weekendOffer").style.display === "block";
+  if (!saleRunning) {
+    const exnessBtn = document.getElementById("exnessExtraBtn");
+    exnessBtn.style.display = "inline-block";
+    exnessBtn.onclick = function () {
+      const message = `Hi, I have signed up via Exness link. I want to buy the ${selectedPlan} plan and claim 10% extra discount.`;
+      const telegramURL = `https://t.me/SK_ProfitMaker_EA?text=${encodeURIComponent(message)}`;
+      window.open(telegramURL, "_blank");
+      closeCouponPopup();
+    };
+  }
 }
+
 
 function closeCouponPopup() {
   document.getElementById("couponModal").style.display = "none";
