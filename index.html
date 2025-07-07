@@ -1,6 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <style>
+  .logo-3d {
+  width: 280px;
+  height: auto;
+  margin: 0 auto;
+  perspective: 1000px;
+}
+
+.logo-3d img {
+  width: 100%;
+  display: block;
+  animation: rotateLogo 5s linear infinite;
+  transform-style: preserve-3d;
+}
+
+@keyframes rotateLogo {
+  0% { transform: rotateY(0deg); }
+  100% { transform: rotateY(180deg); }
+}
+
   .flower {
     position: fixed;
     top: -50px;
@@ -383,11 +402,10 @@ window.addEventListener('DOMContentLoaded', function () {
 
     <!-- ✅ LEFT: SK Logo -->
 <div style="flex: 1; text-align: center;">
-<img src="logo.png" alt="SK Logo"
-     style="max-width: 280px; height: auto; margin: 0 auto; display: block;" />
-
-
+<div class="logo-3d">
+  <img src="logo.png" alt="SK Logo" />
 </div>
+
 
 
 
