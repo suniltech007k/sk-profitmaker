@@ -1156,6 +1156,15 @@ function applyCoupon() {
   const continueBtn = document.getElementById("continueTelegramBtn");
   const exnessBtn = document.getElementById("exnessExtraBtn");
 
+  const offerActive = document.getElementById("weekendOffer").style.display === "block";
+
+  if (!offerActive) {
+    discountEl.innerText = "❌ Coupon not valid right now. No active sale!";
+    continueBtn.style.display = "none";
+    exnessBtn.style.display = "none";
+    return;
+  }
+
   if (code.toUpperCase() === "SK10OFF") {
     const discounted = (originalPrice * 0.9).toFixed(2);
     discountEl.innerText = `✅ Coupon Applied! Final Price: $${discounted}`;
@@ -1176,13 +1185,13 @@ function applyCoupon() {
       window.open(telegramURL, "_blank");
       closeCouponPopup();
     };
-
   } else {
     discountEl.innerText = "❌ Invalid Coupon Code";
     continueBtn.style.display = "none";
     exnessBtn.style.display = "none";
   }
 }
+
 
 function skipCoupon() {
   const message = `Hi, I want to buy the ${selectedPlan} plan without a coupon. Price: $${originalPrice}`;
