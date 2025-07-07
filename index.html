@@ -1157,6 +1157,19 @@ function applyCoupon() {
   const exnessBtn = document.getElementById("exnessExtraBtn");
 
   const offerActive = document.getElementById("weekendOffer").style.display === "block";
+// Show Exness button only if NO offer is active
+if (!offerActive) {
+  exnessBtn.style.display = "inline-block";
+  discountEl.innerText = "✅ Extra 10% OFF if you signup using our Exness link!";
+  
+  exnessBtn.onclick = function () {
+    const message = `Hi, I have signed up via Exness link. I want to buy the ${selectedPlan} plan and claim 10% extra discount.`;
+    const telegramURL = `https://t.me/SK_ProfitMaker_EA?text=${encodeURIComponent(message)}`;
+    window.open(telegramURL, "_blank");
+    closeCouponPopup();
+  };
+  return; // Stop further coupon processing
+}
 
   if (!offerActive) {
     discountEl.innerText = "❌ Coupon not valid right now. No active sale!";
