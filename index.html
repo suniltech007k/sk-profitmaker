@@ -1151,7 +1151,7 @@ function applyCoupon() {
   const offerActive = document.getElementById("weekendOffer").style.display === "block";
 
   if (!offerActive) {
-    discountEl.innerText = "⚠️ Coupon not valid right now. No active sale!";
+    discountEl.innerText = "❌ Coupon not valid right now. No active sale!";
     continueBtn.style.display = "none";
     exnessBtn.style.display = "none";
     return;
