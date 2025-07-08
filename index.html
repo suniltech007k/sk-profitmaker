@@ -1117,7 +1117,7 @@ window.addEventListener('DOMContentLoaded', checkOfferSystem);
 
 <!-- Coupon Popup Modal -->
 <div id="couponModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.8); z-index:9999; justify-content:center; align-items:center;">
-  <div style="background:#1e1e1e; padding:30px; border-radius:10px; width:90%; max-width:400px; color:#fff; position:relative;">
+  <div style="background:#1e1e1e; padding:20px; border-radius:10px; width:90%; max-width:400px; color:#fff; position:relative;">
     <span onclick="closeCouponPopup()" style="position:absolute; top:10px; right:15px; font-size:24px; cursor:pointer;">&times;</span>
     <h2 style="color:#ff9c00;">Apply Coupon</h2>
     <p id="selectedPlan" style="margin-bottom: 10px;"></p>
@@ -1126,9 +1126,11 @@ window.addEventListener('DOMContentLoaded', checkOfferSystem);
     <p id="discountResult" style="font-size:1.1rem;"></p>
     
     <button id="continueTelegramBtn" style="display:none; background:#25D366; color:#fff; padding:10px 15px; border:none; border-radius:6px; margin-top:10px; width:100%; cursor:pointer;">Continue to Telegram</button>
-    <button id="exnessExtraBtn" style="background:#ff4e00; color:#fff; padding:10px 15px; border:none; border-radius:6px; margin-top:10px; width:100%; cursor:pointer;">
-If Signuped with Exness link then Get Extra 10% Off 
+    <!-- ✅ Updated Exness Button Style -->
+<button id="exnessExtraBtn" style="background:#25D366; color:#fff; padding:10px 15px; border:none; border-radius:6px; margin-top:10px; width:100%; cursor:pointer;">
+  If Signed up with Exness link then Get Extra 10% Off
 </button>
+
 <p style="font-size: 0.85rem; color: #ccc; text-align: center; margin-top: 6px;">(Available even without applying a coupon — Exness referral only)</p>
     <button onclick="skipCoupon()" style="margin-top:10px; background-color: transparent; color: #ff9c00; border: 1px solid #ff9c00; padding: 10px 15px; border-radius:6px; width:100%; cursor:pointer;">Skip & Continue Without Coupon</button>
   </div>
