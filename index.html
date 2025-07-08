@@ -618,8 +618,8 @@ window.addEventListener('DOMContentLoaded', function () {
 
 <script>
 // ✅ Manual Offer Start & End Date (If blank, only weekend auto works..LIKE 2025-07-07T08:00:00)
-const manualOfferStart = "2025-07-07T08:00:00";
-const manualOfferEnd = "2025-09-07T08:00:00";
+const manualOfferStart = "";
+const manualOfferEnd = "";
 
 function checkOfferSystem() {
   const now = new Date();
@@ -1149,25 +1149,40 @@ function openCouponPopup(plan, price) {
 
   const exnessBtn = document.getElementById("exnessExtraBtn");
   exnessBtn.style.display = "inline-block";
-  exnessBtn.onclick = function () {
+  
+exnessBtn.onclick = function () {
+  const code = document.getElementById("couponInput").value.trim().toUpperCase();
+  const hasCoupon = code === "SK10OFF";
+
+  let message = `Hi, I want to buy the ${selectedPlan} plan with Exness Signup.
+
+Original Price: $${originalPrice}`;
+
+  if (hasCoupon) {
     const couponDiscount = (originalPrice * 0.10).toFixed(2);
-    const afterCoupon = (originalPrice * 0.90);
-    const exnessDiscount = (afterCoupon * 0.10).toFixed(2);
-    const finalPrice = (afterCoupon * 0.90).toFixed(2);
+    const subtotal = (originalPrice * 0.90);
+    const exnessDiscount = (subtotal * 0.10).toFixed(2);
+    const finalPrice = (subtotal * 0.90).toFixed(2);
 
-    const message = `
-Hi, I want to buy the ${selectedPlan} plan with Exness Signup & Coupon.
-
-Original Price: $${originalPrice}
+    message += `
 Coupon Discount (10%): $${couponDiscount}
-Subtotal after Coupon: $${afterCoupon.toFixed(2)}
+Subtotal after Coupon: $${subtotal.toFixed(2)}
 Extra Exness Discount (10%): $${exnessDiscount}
-Final Price after Exness: $${finalPrice}
-    `;
-    const telegramURL = `https://t.me/SK_ProfitMaker_EA?text=${encodeURIComponent(message)}`;
-    window.open(telegramURL, "_blank");
-    closeCouponPopup();
-  };
+Final Price after Exness: $${finalPrice}`;
+  } else {
+    const exnessDiscount = (originalPrice * 0.10).toFixed(2);
+    const finalPrice = (originalPrice * 0.90).toFixed(2);
+
+    message += `
+Exness Discount (10%): $${exnessDiscount}
+Final Price: $${finalPrice}`;
+  }
+
+  const telegramURL = `https://t.me/SK_ProfitMaker_EA?text=${encodeURIComponent(message)}`;
+  window.open(telegramURL, "_blank");
+  closeCouponPopup();
+};
+
 
   const continueBtn = document.getElementById("continueTelegramBtn");
   continueBtn.onclick = function () {
@@ -1228,13 +1243,40 @@ function applyCoupon() {
       closeCouponPopup();
     };
 
-    exnessBtn.onclick = function () {
-      const exnessPrice = (discounted * 0.9).toFixed(2);
-      const message = `Hi, I want to buy the ${selectedPlan} plan with Exness Signup. Final price after extra 10% off: $${exnessPrice}`;
-      const telegramURL = `https://t.me/SK_ProfitMaker_EA?text=${encodeURIComponent(message)}`;
-      window.open(telegramURL, "_blank");
-      closeCouponPopup();
-    };
+    
+exnessBtn.onclick = function () {
+  const code = document.getElementById("couponInput").value.trim().toUpperCase();
+  const hasCoupon = code === "SK10OFF";
+
+  let message = `Hi, I want to buy the ${selectedPlan} plan with Exness Signup.
+
+Original Price: $${originalPrice}`;
+
+  if (hasCoupon) {
+    const couponDiscount = (originalPrice * 0.10).toFixed(2);
+    const subtotal = (originalPrice * 0.90);
+    const exnessDiscount = (subtotal * 0.10).toFixed(2);
+    const finalPrice = (subtotal * 0.90).toFixed(2);
+
+    message += `
+Coupon Discount (10%): $${couponDiscount}
+Subtotal after Coupon: $${subtotal.toFixed(2)}
+Extra Exness Discount (10%): $${exnessDiscount}
+Final Price after Exness: $${finalPrice}`;
+  } else {
+    const exnessDiscount = (originalPrice * 0.10).toFixed(2);
+    const finalPrice = (originalPrice * 0.90).toFixed(2);
+
+    message += `
+Exness Discount (10%): $${exnessDiscount}
+Final Price: $${finalPrice}`;
+  }
+
+  const telegramURL = `https://t.me/SK_ProfitMaker_EA?text=${encodeURIComponent(message)}`;
+  window.open(telegramURL, "_blank");
+  closeCouponPopup();
+};
+
   } else {
     discountEl.innerText = "❌ Invalid Coupon Code";
     continueBtn.style.display = "none";
@@ -1291,25 +1333,40 @@ function openCouponPopup(plan, price) {
 
   const exnessBtn = document.getElementById("exnessExtraBtn");
   exnessBtn.style.display = "inline-block";
-  exnessBtn.onclick = function () {
+  
+exnessBtn.onclick = function () {
+  const code = document.getElementById("couponInput").value.trim().toUpperCase();
+  const hasCoupon = code === "SK10OFF";
+
+  let message = `Hi, I want to buy the ${selectedPlan} plan with Exness Signup.
+
+Original Price: $${originalPrice}`;
+
+  if (hasCoupon) {
     const couponDiscount = (originalPrice * 0.10).toFixed(2);
-    const afterCoupon = (originalPrice * 0.90);
-    const exnessDiscount = (afterCoupon * 0.10).toFixed(2);
-    const finalPrice = (afterCoupon * 0.90).toFixed(2);
+    const subtotal = (originalPrice * 0.90);
+    const exnessDiscount = (subtotal * 0.10).toFixed(2);
+    const finalPrice = (subtotal * 0.90).toFixed(2);
 
-    const message = `
-Hi, I want to buy the ${selectedPlan} plan with Exness Signup & Coupon.
-
-Original Price: $${originalPrice}
+    message += `
 Coupon Discount (10%): $${couponDiscount}
-Subtotal after Coupon: $${afterCoupon.toFixed(2)}
+Subtotal after Coupon: $${subtotal.toFixed(2)}
 Extra Exness Discount (10%): $${exnessDiscount}
-Final Price after Exness: $${finalPrice}
-    `;
-    const telegramURL = `https://t.me/SK_ProfitMaker_EA?text=${encodeURIComponent(message)}`;
-    window.open(telegramURL, "_blank");
-    closeCouponPopup();
-  };
+Final Price after Exness: $${finalPrice}`;
+  } else {
+    const exnessDiscount = (originalPrice * 0.10).toFixed(2);
+    const finalPrice = (originalPrice * 0.90).toFixed(2);
+
+    message += `
+Exness Discount (10%): $${exnessDiscount}
+Final Price: $${finalPrice}`;
+  }
+
+  const telegramURL = `https://t.me/SK_ProfitMaker_EA?text=${encodeURIComponent(message)}`;
+  window.open(telegramURL, "_blank");
+  closeCouponPopup();
+};
+
 
   const continueBtn = document.getElementById("continueTelegramBtn");
   continueBtn.onclick = function () {
@@ -1377,23 +1434,40 @@ Final Price: $${discounted}
     };
 
     exnessBtn.style.display = "inline-block";
-    exnessBtn.onclick = function () {
-      const afterCoupon = (originalPrice * 0.90);
-      const exnessDiscount = (afterCoupon * 0.10).toFixed(2);
-      const finalPrice = (afterCoupon * 0.90).toFixed(2);
+    
+exnessBtn.onclick = function () {
+  const code = document.getElementById("couponInput").value.trim().toUpperCase();
+  const hasCoupon = code === "SK10OFF";
 
-      const message = `
-Hi, I want to buy the ${selectedPlan} plan with Exness Signup & Coupon.
+  let message = `Hi, I want to buy the ${selectedPlan} plan with Exness Signup.
 
-Original Price: $${originalPrice}
-Coupon Discount (10%): $${discounted}
+Original Price: $${originalPrice}`;
+
+  if (hasCoupon) {
+    const couponDiscount = (originalPrice * 0.10).toFixed(2);
+    const subtotal = (originalPrice * 0.90);
+    const exnessDiscount = (subtotal * 0.10).toFixed(2);
+    const finalPrice = (subtotal * 0.90).toFixed(2);
+
+    message += `
+Coupon Discount (10%): $${couponDiscount}
+Subtotal after Coupon: $${subtotal.toFixed(2)}
 Extra Exness Discount (10%): $${exnessDiscount}
-Final Price after Exness: $${finalPrice}
-      `;
-      const telegramURL = `https://t.me/SK_ProfitMaker_EA?text=${encodeURIComponent(message)}`;
-      window.open(telegramURL, "_blank");
-      closeCouponPopup();
-    };
+Final Price after Exness: $${finalPrice}`;
+  } else {
+    const exnessDiscount = (originalPrice * 0.10).toFixed(2);
+    const finalPrice = (originalPrice * 0.90).toFixed(2);
+
+    message += `
+Exness Discount (10%): $${exnessDiscount}
+Final Price: $${finalPrice}`;
+  }
+
+  const telegramURL = `https://t.me/SK_ProfitMaker_EA?text=${encodeURIComponent(message)}`;
+  window.open(telegramURL, "_blank");
+  closeCouponPopup();
+};
+
 
   } else {
     discountEl.innerText = "❌ Invalid Coupon Code";
@@ -1428,25 +1502,40 @@ function openCouponPopup(plan, price) {
 
   const exnessBtn = document.getElementById("exnessExtraBtn");
   exnessBtn.style.display = "inline-block";
-  exnessBtn.onclick = function () {
+  
+exnessBtn.onclick = function () {
+  const code = document.getElementById("couponInput").value.trim().toUpperCase();
+  const hasCoupon = code === "SK10OFF";
+
+  let message = `Hi, I want to buy the ${selectedPlan} plan with Exness Signup.
+
+Original Price: $${originalPrice}`;
+
+  if (hasCoupon) {
     const couponDiscount = (originalPrice * 0.10).toFixed(2);
-    const afterCoupon = (originalPrice * 0.90);
-    const exnessDiscount = (afterCoupon * 0.10).toFixed(2);
-    const finalPrice = (afterCoupon * 0.90).toFixed(2);
+    const subtotal = (originalPrice * 0.90);
+    const exnessDiscount = (subtotal * 0.10).toFixed(2);
+    const finalPrice = (subtotal * 0.90).toFixed(2);
 
-    const message = `
-Hi, I want to buy the ${selectedPlan} plan with Exness Signup & Coupon.
-
-Original Price: $${originalPrice}
+    message += `
 Coupon Discount (10%): $${couponDiscount}
-Subtotal after Coupon: $${afterCoupon.toFixed(2)}
+Subtotal after Coupon: $${subtotal.toFixed(2)}
 Extra Exness Discount (10%): $${exnessDiscount}
-Final Price after Exness: $${finalPrice}
-    `;
-    const telegramURL = `https://t.me/SK_ProfitMaker_EA?text=${encodeURIComponent(message)}`;
-    window.open(telegramURL, "_blank");
-    closeCouponPopup();
-  };
+Final Price after Exness: $${finalPrice}`;
+  } else {
+    const exnessDiscount = (originalPrice * 0.10).toFixed(2);
+    const finalPrice = (originalPrice * 0.90).toFixed(2);
+
+    message += `
+Exness Discount (10%): $${exnessDiscount}
+Final Price: $${finalPrice}`;
+  }
+
+  const telegramURL = `https://t.me/SK_ProfitMaker_EA?text=${encodeURIComponent(message)}`;
+  window.open(telegramURL, "_blank");
+  closeCouponPopup();
+};
+
 
   const continueBtn = document.getElementById("continueTelegramBtn");
   continueBtn.onclick = function () {
@@ -1514,23 +1603,40 @@ Final Price: $${discounted}
     };
 
     exnessBtn.style.display = "inline-block";
-    exnessBtn.onclick = function () {
-      const afterCoupon = (originalPrice * 0.90);
-      const exnessDiscount = (afterCoupon * 0.10).toFixed(2);
-      const finalPrice = (afterCoupon * 0.90).toFixed(2);
+    
+exnessBtn.onclick = function () {
+  const code = document.getElementById("couponInput").value.trim().toUpperCase();
+  const hasCoupon = code === "SK10OFF";
 
-      const message = `
-Hi, I want to buy the ${selectedPlan} plan with Exness Signup & Coupon.
+  let message = `Hi, I want to buy the ${selectedPlan} plan with Exness Signup.
 
-Original Price: $${originalPrice}
-Coupon Discount (10%): $${discounted}
+Original Price: $${originalPrice}`;
+
+  if (hasCoupon) {
+    const couponDiscount = (originalPrice * 0.10).toFixed(2);
+    const subtotal = (originalPrice * 0.90);
+    const exnessDiscount = (subtotal * 0.10).toFixed(2);
+    const finalPrice = (subtotal * 0.90).toFixed(2);
+
+    message += `
+Coupon Discount (10%): $${couponDiscount}
+Subtotal after Coupon: $${subtotal.toFixed(2)}
 Extra Exness Discount (10%): $${exnessDiscount}
-Final Price after Exness: $${finalPrice}
-      `;
-      const telegramURL = `https://t.me/SK_ProfitMaker_EA?text=${encodeURIComponent(message)}`;
-      window.open(telegramURL, "_blank");
-      closeCouponPopup();
-    };
+Final Price after Exness: $${finalPrice}`;
+  } else {
+    const exnessDiscount = (originalPrice * 0.10).toFixed(2);
+    const finalPrice = (originalPrice * 0.90).toFixed(2);
+
+    message += `
+Exness Discount (10%): $${exnessDiscount}
+Final Price: $${finalPrice}`;
+  }
+
+  const telegramURL = `https://t.me/SK_ProfitMaker_EA?text=${encodeURIComponent(message)}`;
+  window.open(telegramURL, "_blank");
+  closeCouponPopup();
+};
+
 
   } else {
     discountEl.innerText = "❌ Invalid Coupon Code";
