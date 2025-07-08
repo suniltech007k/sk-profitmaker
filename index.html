@@ -618,8 +618,8 @@ window.addEventListener('DOMContentLoaded', function () {
 
 <script>
 // ✅ Manual Offer Start & End Date (If blank, only weekend auto works..LIKE 2025-07-07T08:00:00)
-const manualOfferStart = "2025-07-07T08:00:00";
-const manualOfferEnd = "2025-07-10T08:00:00";
+const manualOfferStart = "";
+const manualOfferEnd = "";
 
 function checkOfferSystem() {
   const now = new Date();
@@ -1150,9 +1150,11 @@ function openCouponPopup(plan, price) {
   const exnessBtn = document.getElementById("exnessExtraBtn");
   exnessBtn.style.display = "inline-block";
   
+
 exnessBtn.onclick = function () {
   const code = document.getElementById("couponInput").value.trim().toUpperCase();
-  const hasCoupon = code === "SK10OFF";
+  const discountEl = document.getElementById("discountResult");
+  const hasCoupon = (code === "SK10OFF" && discountEl.innerText.includes("✅ Coupon Applied"));
 
   let message = `Hi, I want to buy the ${selectedPlan} plan with Exness Signup.
 
@@ -1182,6 +1184,7 @@ Final Price: $${finalPrice}`;
   window.open(telegramURL, "_blank");
   closeCouponPopup();
 };
+
 
 
   const continueBtn = document.getElementById("continueTelegramBtn");
@@ -1244,9 +1247,11 @@ function applyCoupon() {
     };
 
     
+
 exnessBtn.onclick = function () {
   const code = document.getElementById("couponInput").value.trim().toUpperCase();
-  const hasCoupon = code === "SK10OFF";
+  const discountEl = document.getElementById("discountResult");
+  const hasCoupon = (code === "SK10OFF" && discountEl.innerText.includes("✅ Coupon Applied"));
 
   let message = `Hi, I want to buy the ${selectedPlan} plan with Exness Signup.
 
@@ -1276,6 +1281,7 @@ Final Price: $${finalPrice}`;
   window.open(telegramURL, "_blank");
   closeCouponPopup();
 };
+
 
   } else {
     discountEl.innerText = "❌ Invalid Coupon Code";
@@ -1334,9 +1340,11 @@ function openCouponPopup(plan, price) {
   const exnessBtn = document.getElementById("exnessExtraBtn");
   exnessBtn.style.display = "inline-block";
   
+
 exnessBtn.onclick = function () {
   const code = document.getElementById("couponInput").value.trim().toUpperCase();
-  const hasCoupon = code === "SK10OFF";
+  const discountEl = document.getElementById("discountResult");
+  const hasCoupon = (code === "SK10OFF" && discountEl.innerText.includes("✅ Coupon Applied"));
 
   let message = `Hi, I want to buy the ${selectedPlan} plan with Exness Signup.
 
@@ -1366,6 +1374,7 @@ Final Price: $${finalPrice}`;
   window.open(telegramURL, "_blank");
   closeCouponPopup();
 };
+
 
 
   const continueBtn = document.getElementById("continueTelegramBtn");
@@ -1435,9 +1444,11 @@ Final Price: $${discounted}
 
     exnessBtn.style.display = "inline-block";
     
+
 exnessBtn.onclick = function () {
   const code = document.getElementById("couponInput").value.trim().toUpperCase();
-  const hasCoupon = code === "SK10OFF";
+  const discountEl = document.getElementById("discountResult");
+  const hasCoupon = (code === "SK10OFF" && discountEl.innerText.includes("✅ Coupon Applied"));
 
   let message = `Hi, I want to buy the ${selectedPlan} plan with Exness Signup.
 
@@ -1467,6 +1478,7 @@ Final Price: $${finalPrice}`;
   window.open(telegramURL, "_blank");
   closeCouponPopup();
 };
+
 
 
   } else {
@@ -1503,9 +1515,11 @@ function openCouponPopup(plan, price) {
   const exnessBtn = document.getElementById("exnessExtraBtn");
   exnessBtn.style.display = "inline-block";
   
+
 exnessBtn.onclick = function () {
   const code = document.getElementById("couponInput").value.trim().toUpperCase();
-  const hasCoupon = code === "SK10OFF";
+  const discountEl = document.getElementById("discountResult");
+  const hasCoupon = (code === "SK10OFF" && discountEl.innerText.includes("✅ Coupon Applied"));
 
   let message = `Hi, I want to buy the ${selectedPlan} plan with Exness Signup.
 
@@ -1535,6 +1549,7 @@ Final Price: $${finalPrice}`;
   window.open(telegramURL, "_blank");
   closeCouponPopup();
 };
+
 
 
   const continueBtn = document.getElementById("continueTelegramBtn");
@@ -1604,9 +1619,11 @@ Final Price: $${discounted}
 
     exnessBtn.style.display = "inline-block";
     
+
 exnessBtn.onclick = function () {
   const code = document.getElementById("couponInput").value.trim().toUpperCase();
-  const hasCoupon = code === "SK10OFF";
+  const discountEl = document.getElementById("discountResult");
+  const hasCoupon = (code === "SK10OFF" && discountEl.innerText.includes("✅ Coupon Applied"));
 
   let message = `Hi, I want to buy the ${selectedPlan} plan with Exness Signup.
 
@@ -1636,6 +1653,7 @@ Final Price: $${finalPrice}`;
   window.open(telegramURL, "_blank");
   closeCouponPopup();
 };
+
 
 
   } else {
