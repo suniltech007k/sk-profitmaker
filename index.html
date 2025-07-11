@@ -136,6 +136,9 @@ animation: rotateLogo 2s ease-out 1;
   #exnessExtraBtn {
     display: none !important;
   }
+  #exnessNoteText {
+    display: none !important;
+  }
 </style>
 
 <head>
@@ -1162,7 +1165,9 @@ window.addEventListener('DOMContentLoaded', checkOfferSystem);
     <button id="exnessExtraBtn" style="background:#25D366; color:#fff; padding:10px 15px; border:none; border-radius:6px; margin-top:10px; width:100%; cursor:pointer;">
 If Signuped with Exness link then Get Extra 10% Off 
 </button>
-<p style="font-size: 0.85rem; color: #ccc; text-align: center; margin-top: 6px;">(Available even without applying a coupon — Exness referral only)</p>
+<p id="exnessNoteText" style="font-size: 0.85rem; color: #ccc; text-align: center; margin-top: 6px;">
+  (Available even without applying a coupon — Exness referral only)
+</p>
     <button onclick="skipCoupon()" style="margin-top:10px; background-color: transparent; color: #ff9c00; border: none; padding: 10px 15px; border-radius:6px; width:100%; cursor:pointer;">Skip & Continue Without Coupon</button>
   </div>
 </div>
