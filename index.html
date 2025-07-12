@@ -402,7 +402,7 @@ body::before {
      style="display:none; background: linear-gradient(90deg, #fff7c5, #ffe066); padding: 20px; text-align: center; font-size: 1.2rem; font-weight: bold; border-top: 3px dashed #ff9f00; border-bottom: 3px dashed #ff9f00; color: #111;">
   🎉 <span style="color:#000;">You visited through our Exness referral link!</span><br>
   👉 <span style="color:#000;">Complete your Exness account registration and</span>
-  <span style="color:red;">get EXTRA 10% OFF</span> on our EA — <span style="color:#000;">Grab This Offer Now !!!</span>.
+  <span style="color:red;">get EXTRA 15% OFF</span> on our EA — <span style="color:#000;">Grab This Offer Now !!!</span>.
   <br><br>
   ✅ <span style="color:#000;">Confirm your account on Telegram:</span>
   <a href="https://t.me/SK_ProfitMaker_EA" target="_blank" style="color: #0066cc; text-decoration: underline;">@Sunilmati007</a>
@@ -642,7 +642,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
 <!-- Weekend / Manual Offer Banner -->
 <section id="weekendOffer" style="display:none; background: linear-gradient(90deg, #ff4e00, #ff9c00); color: #000; text-align: center; padding: 25px 20px; font-weight: bold; font-size: 1.2rem;">
-  🎉 Limited-Time Offer: <span style="color: #fff;">15% OFF</span> — Use code <span style="color: #000; background: #fff; padding: 5px 10px; border-radius: 5px;">SK10OFF</span>
+  🎉 Limited-Time Offer: <span style="color: #fff;">15% OFF</span> — Use code <span style="color: #000; background: #fff; padding: 5px 10px; border-radius: 5px;">SK15OFF</span>
   <br />
   ⏳ Offer ends in: <span id="weekendCountdown" style="color: #fff;"></span>
 </section>
@@ -798,7 +798,7 @@ window.addEventListener('DOMContentLoaded', checkOfferSystem);
 
   <!-- 📢 Message -->
   <div style="font-size: 1.2rem; font-weight: bold; color: black;">
-    🚀 <span style="color: #000;">Open account using our Exness link & get EXTRA</span> <span style="color: red;">10% OFF</span>  Grab This Offer Now !!!.
+    🚀 <span style="color: #000;">Open account using our Exness link & get EXTRA</span> <span style="color: red;">15% OFF</span>  Grab This Offer Now !!!.
   </div>
 
   <!-- 🟢 Referral Link Button -->
@@ -830,7 +830,7 @@ window.addEventListener('DOMContentLoaded', checkOfferSystem);
       <span>⚡</span> <p>Auto trade XAUUSD on 1-minute chart</p>
     </div>
     <div class="benefit-card" data-aos="zoom-in">
-      <span>🎯</span> <p>EXTRA 10% OFF via Exness referral link — Offer Expired Now</p>
+      <span>🎯</span> <p>EXTRA 15% OFF via Exness referral link — Offer Expired Now</p>
     </div>
 
     <!-- 🔥 Paid Add-ons -->
@@ -1192,29 +1192,29 @@ function openCouponPopup(plan, price) {
 exnessBtn.onclick = function () {
   const code = document.getElementById("couponInput").value.trim().toUpperCase();
   const discountEl = document.getElementById("discountResult");
-  const hasCoupon = (code === "SK10OFF" && discountEl.innerText.includes("✅ Coupon Applied"));
+  const hasCoupon = (code === "SK15OFF" && discountEl.innerText.includes("✅ Coupon Applied"));
 
   let message = `Hi, I want to buy the ${selectedPlan} plan with Exness Signup.
 
 Original Price: $${originalPrice}`;
 
   if (hasCoupon) {
-    const couponDiscount = (originalPrice * 0.10).toFixed(2);
-    const subtotal = (originalPrice * 0.90);
-    const exnessDiscount = (subtotal * 0.10).toFixed(2);
-    const finalPrice = (subtotal * 0.90).toFixed(2);
+    const couponDiscount = (originalPrice * 0.15).toFixed(2);
+    const subtotal = (originalPrice * 0.85);
+    const exnessDiscount = (subtotal * 0.15).toFixed(2);
+    const finalPrice = (subtotal * 0.85).toFixed(2);
 
     message += `
-Coupon Discount (10%): $${couponDiscount}
+Coupon Discount (15%): $${couponDiscount}
 Subtotal after Coupon: $${subtotal.toFixed(2)}
-Extra Exness Discount (10%): $${exnessDiscount}
+Extra Exness Discount (15%): $${exnessDiscount}
 Final Price after Exness: $${finalPrice}`;
   } else {
-    const exnessDiscount = (originalPrice * 0.10).toFixed(2);
-    const finalPrice = (originalPrice * 0.90).toFixed(2);
+    const exnessDiscount = (originalPrice * 0.15).toFixed(2);
+    const finalPrice = (originalPrice * 0.85).toFixed(2);
 
     message += `
-Exness Discount (10%): $${exnessDiscount}
+Exness Discount (15%): $${exnessDiscount}
 Final Price: $${finalPrice}`;
   }
 
@@ -1230,10 +1230,10 @@ Final Price: $${finalPrice}`;
 const discountAmount = (originalPrice * 0.15).toFixed(2);
 const discounted = (originalPrice * 0.85).toFixed(2);
     const message = `
-Hi, I want to buy the ${selectedPlan} plan using coupon SK10OFF.
+Hi, I want to buy the ${selectedPlan} plan using coupon SK15OFF.
 
 Original Price: $${originalPrice}
-Coupon Discount (10%): $${discountAmount}
+Coupon Discount (15%): $${discountAmount}
 Final Price: $${discounted}
     `;
     const telegramURL = `https://t.me/SK_ProfitMaker_EA?text=${encodeURIComponent(message)}`;
@@ -1272,7 +1272,7 @@ function applyCoupon() {
   }
 
   if (code.toUpperCase() === "SK15OFF") {
-    const discounted = (originalPrice * 0.15).toFixed(2);
+    const discounted = (originalPrice * 0.9).toFixed(2);
     discountEl.innerText = `✅ Coupon Applied! Final Price: $${discounted}`;
     continueBtn.style.display = "inline-block";
     exnessBtn.style.display = "inline-block";
@@ -1289,29 +1289,29 @@ function applyCoupon() {
 exnessBtn.onclick = function () {
   const code = document.getElementById("couponInput").value.trim().toUpperCase();
   const discountEl = document.getElementById("discountResult");
-  const hasCoupon = (code === "SK10OFF" && discountEl.innerText.includes("✅ Coupon Applied"));
+  const hasCoupon = (code === "SK15OFF" && discountEl.innerText.includes("✅ Coupon Applied"));
 
   let message = `Hi, I want to buy the ${selectedPlan} plan with Exness Signup.
 
 Original Price: $${originalPrice}`;
 
   if (hasCoupon) {
-    const couponDiscount = (originalPrice * 0.10).toFixed(2);
-    const subtotal = (originalPrice * 0.90);
-    const exnessDiscount = (subtotal * 0.10).toFixed(2);
-    const finalPrice = (subtotal * 0.90).toFixed(2);
+    const couponDiscount = (originalPrice * 0.15).toFixed(2);
+    const subtotal = (originalPrice * 0.85);
+    const exnessDiscount = (subtotal * 0.15).toFixed(2);
+    const finalPrice = (subtotal * 0.85).toFixed(2);
 
     message += `
-Coupon Discount (10%): $${couponDiscount}
+Coupon Discount (15%): $${couponDiscount}
 Subtotal after Coupon: $${subtotal.toFixed(2)}
-Extra Exness Discount (10%): $${exnessDiscount}
+Extra Exness Discount (15%): $${exnessDiscount}
 Final Price after Exness: $${finalPrice}`;
   } else {
-    const exnessDiscount = (originalPrice * 0.10).toFixed(2);
-    const finalPrice = (originalPrice * 0.90).toFixed(2);
+    const exnessDiscount = (originalPrice * 0.15).toFixed(2);
+    const finalPrice = (originalPrice * 0.85).toFixed(2);
 
     message += `
-Exness Discount (10%): $${exnessDiscount}
+Exness Discount (15%): $${exnessDiscount}
 Final Price: $${finalPrice}`;
   }
 
@@ -1382,29 +1382,29 @@ function openCouponPopup(plan, price) {
 exnessBtn.onclick = function () {
   const code = document.getElementById("couponInput").value.trim().toUpperCase();
   const discountEl = document.getElementById("discountResult");
-  const hasCoupon = (code === "SK10OFF" && discountEl.innerText.includes("✅ Coupon Applied"));
+  const hasCoupon = (code === "SK15OFF" && discountEl.innerText.includes("✅ Coupon Applied"));
 
   let message = `Hi, I want to buy the ${selectedPlan} plan with Exness Signup.
 
 Original Price: $${originalPrice}`;
 
   if (hasCoupon) {
-    const couponDiscount = (originalPrice * 0.10).toFixed(2);
-    const subtotal = (originalPrice * 0.90);
-    const exnessDiscount = (subtotal * 0.10).toFixed(2);
-    const finalPrice = (subtotal * 0.90).toFixed(2);
+    const couponDiscount = (originalPrice * 0.15).toFixed(2);
+    const subtotal = (originalPrice * 0.85);
+    const exnessDiscount = (subtotal * 0.15).toFixed(2);
+    const finalPrice = (subtotal * 0.85).toFixed(2);
 
     message += `
-Coupon Discount (10%): $${couponDiscount}
+Coupon Discount (15%): $${couponDiscount}
 Subtotal after Coupon: $${subtotal.toFixed(2)}
-Extra Exness Discount (10%): $${exnessDiscount}
+Extra Exness Discount (15%): $${exnessDiscount}
 Final Price after Exness: $${finalPrice}`;
   } else {
-    const exnessDiscount = (originalPrice * 0.10).toFixed(2);
-    const finalPrice = (originalPrice * 0.90).toFixed(2);
+    const exnessDiscount = (originalPrice * 0.15).toFixed(2);
+    const finalPrice = (originalPrice * 0.85).toFixed(2);
 
     message += `
-Exness Discount (10%): $${exnessDiscount}
+Exness Discount (15%): $${exnessDiscount}
 Final Price: $${finalPrice}`;
   }
 
@@ -1417,13 +1417,13 @@ Final Price: $${finalPrice}`;
 
   const continueBtn = document.getElementById("continueTelegramBtn");
   continueBtn.onclick = function () {
-    const discountAmount = (originalPrice * 0.10).toFixed(2);
-    const discounted = (originalPrice * 0.90).toFixed(2);
+    const discountAmount = (originalPrice * 0.15).toFixed(2);
+    const discounted = (originalPrice * 0.85).toFixed(2);
     const message = `
-Hi, I want to buy the ${selectedPlan} plan using coupon SK10OFF.
+Hi, I want to buy the ${selectedPlan} plan using coupon SK15OFF.
 
 Original Price: $${originalPrice}
-Coupon Discount (10%): $${discountAmount}
+Coupon Discount (15%): $${discountAmount}
 Final Price: $${discounted}
     `;
     const telegramURL = `https://t.me/SK_ProfitMaker_EA?text=${encodeURIComponent(message)}`;
@@ -1461,7 +1461,7 @@ function applyCoupon() {
     return;
   }
 
-  if (code.toUpperCase() === "SK10OFF") {
+  if (code.toUpperCase() === "SK15OFF") {
     const discounted = (originalPrice * 0.9).toFixed(2);
     const discountAmount = (originalPrice * 0.1).toFixed(2);
     discountEl.innerText = `✅ Coupon Applied! Final Price: $${discounted}`;
@@ -1469,10 +1469,10 @@ function applyCoupon() {
     continueBtn.style.display = "inline-block";
     continueBtn.onclick = function () {
       const message = `
-Hi, I want to buy the ${selectedPlan} plan using coupon SK10OFF.
+Hi, I want to buy the ${selectedPlan} plan using coupon SK15OFF.
 
 Original Price: $${originalPrice}
-Coupon Discount (10%): $${discountAmount}
+Coupon Discount (15%): $${discountAmount}
 Final Price: $${discounted}
       `;
       const telegramURL = `https://t.me/SK_ProfitMaker_EA?text=${encodeURIComponent(message)}`;
@@ -1486,29 +1486,29 @@ Final Price: $${discounted}
 exnessBtn.onclick = function () {
   const code = document.getElementById("couponInput").value.trim().toUpperCase();
   const discountEl = document.getElementById("discountResult");
-  const hasCoupon = (code === "SK10OFF" && discountEl.innerText.includes("✅ Coupon Applied"));
+  const hasCoupon = (code === "SK15OFF" && discountEl.innerText.includes("✅ Coupon Applied"));
 
   let message = `Hi, I want to buy the ${selectedPlan} plan with Exness Signup.
 
 Original Price: $${originalPrice}`;
 
   if (hasCoupon) {
-    const couponDiscount = (originalPrice * 0.10).toFixed(2);
-    const subtotal = (originalPrice * 0.90);
-    const exnessDiscount = (subtotal * 0.10).toFixed(2);
-    const finalPrice = (subtotal * 0.90).toFixed(2);
+    const couponDiscount = (originalPrice * 0.15).toFixed(2);
+    const subtotal = (originalPrice * 0.85);
+    const exnessDiscount = (subtotal * 0.15).toFixed(2);
+    const finalPrice = (subtotal * 0.85).toFixed(2);
 
     message += `
-Coupon Discount (10%): $${couponDiscount}
+Coupon Discount (15%): $${couponDiscount}
 Subtotal after Coupon: $${subtotal.toFixed(2)}
-Extra Exness Discount (10%): $${exnessDiscount}
+Extra Exness Discount (15%): $${exnessDiscount}
 Final Price after Exness: $${finalPrice}`;
   } else {
-    const exnessDiscount = (originalPrice * 0.10).toFixed(2);
-    const finalPrice = (originalPrice * 0.90).toFixed(2);
+    const exnessDiscount = (originalPrice * 0.15).toFixed(2);
+    const finalPrice = (originalPrice * 0.85).toFixed(2);
 
     message += `
-Exness Discount (10%): $${exnessDiscount}
+Exness Discount (15%): $${exnessDiscount}
 Final Price: $${finalPrice}`;
   }
 
@@ -1557,29 +1557,29 @@ function openCouponPopup(plan, price) {
 exnessBtn.onclick = function () {
   const code = document.getElementById("couponInput").value.trim().toUpperCase();
   const discountEl = document.getElementById("discountResult");
-  const hasCoupon = (code === "SK10OFF" && discountEl.innerText.includes("✅ Coupon Applied"));
+  const hasCoupon = (code === "SK15OFF" && discountEl.innerText.includes("✅ Coupon Applied"));
 
   let message = `Hi, I want to buy the ${selectedPlan} plan with Exness Signup.
 
 Original Price: $${originalPrice}`;
 
   if (hasCoupon) {
-    const couponDiscount = (originalPrice * 0.10).toFixed(2);
-    const subtotal = (originalPrice * 0.90);
-    const exnessDiscount = (subtotal * 0.10).toFixed(2);
-    const finalPrice = (subtotal * 0.90).toFixed(2);
+    const couponDiscount = (originalPrice * 0.15).toFixed(2);
+    const subtotal = (originalPrice * 0.85);
+    const exnessDiscount = (subtotal * 0.15).toFixed(2);
+    const finalPrice = (subtotal * 0.85).toFixed(2);
 
     message += `
-Coupon Discount (10%): $${couponDiscount}
+Coupon Discount (15%): $${couponDiscount}
 Subtotal after Coupon: $${subtotal.toFixed(2)}
-Extra Exness Discount (10%): $${exnessDiscount}
+Extra Exness Discount (15%): $${exnessDiscount}
 Final Price after Exness: $${finalPrice}`;
   } else {
-    const exnessDiscount = (originalPrice * 0.10).toFixed(2);
-    const finalPrice = (originalPrice * 0.90).toFixed(2);
+    const exnessDiscount = (originalPrice * 0.15).toFixed(2);
+    const finalPrice = (originalPrice * 0.85).toFixed(2);
 
     message += `
-Exness Discount (10%): $${exnessDiscount}
+Exness Discount (15%): $${exnessDiscount}
 Final Price: $${finalPrice}`;
   }
 
@@ -1592,13 +1592,13 @@ Final Price: $${finalPrice}`;
 
   const continueBtn = document.getElementById("continueTelegramBtn");
   continueBtn.onclick = function () {
-    const discountAmount = (originalPrice * 0.10).toFixed(2);
-    const discounted = (originalPrice * 0.90).toFixed(2);
+    const discountAmount = (originalPrice * 0.15).toFixed(2);
+    const discounted = (originalPrice * 0.85).toFixed(2);
     const message = `
-Hi, I want to buy the ${selectedPlan} plan using coupon SK10OFF.
+Hi, I want to buy the ${selectedPlan} plan using coupon SK15OFF.
 
 Original Price: $${originalPrice}
-Coupon Discount (10%): $${discountAmount}
+Coupon Discount (15%): $${discountAmount}
 Final Price: $${discounted}
     `;
     const telegramURL = `https://t.me/SK_ProfitMaker_EA?text=${encodeURIComponent(message)}`;
@@ -1636,7 +1636,7 @@ function applyCoupon() {
     return;
   }
 
-  if (code.toUpperCase() === "SK10OFF") {
+  if (code.toUpperCase() === "SK15OFF") {
     const discounted = (originalPrice * 0.9).toFixed(2);
     const discountAmount = (originalPrice * 0.1).toFixed(2);
     discountEl.innerText = `✅ Coupon Applied! Final Price: $${discounted}`;
@@ -1644,10 +1644,10 @@ function applyCoupon() {
     continueBtn.style.display = "inline-block";
     continueBtn.onclick = function () {
       const message = `
-Hi, I want to buy the ${selectedPlan} plan using coupon SK10OFF.
+Hi, I want to buy the ${selectedPlan} plan using coupon SK15OFF.
 
 Original Price: $${originalPrice}
-Coupon Discount (10%): $${discountAmount}
+Coupon Discount (15%): $${discountAmount}
 Final Price: $${discounted}
       `;
       const telegramURL = `https://t.me/SK_ProfitMaker_EA?text=${encodeURIComponent(message)}`;
@@ -1661,29 +1661,29 @@ Final Price: $${discounted}
 exnessBtn.onclick = function () {
   const code = document.getElementById("couponInput").value.trim().toUpperCase();
   const discountEl = document.getElementById("discountResult");
-  const hasCoupon = (code === "SK10OFF" && discountEl.innerText.includes("✅ Coupon Applied"));
+  const hasCoupon = (code === "SK15OFF" && discountEl.innerText.includes("✅ Coupon Applied"));
 
   let message = `Hi, I want to buy the ${selectedPlan} plan with Exness Signup.
 
 Original Price: $${originalPrice}`;
 
   if (hasCoupon) {
-    const couponDiscount = (originalPrice * 0.10).toFixed(2);
-    const subtotal = (originalPrice * 0.90);
-    const exnessDiscount = (subtotal * 0.10).toFixed(2);
-    const finalPrice = (subtotal * 0.90).toFixed(2);
+    const couponDiscount = (originalPrice * 0.15).toFixed(2);
+    const subtotal = (originalPrice * 0.85);
+    const exnessDiscount = (subtotal * 0.15).toFixed(2);
+    const finalPrice = (subtotal * 0.85).toFixed(2);
 
     message += `
-Coupon Discount (10%): $${couponDiscount}
+Coupon Discount (15%): $${couponDiscount}
 Subtotal after Coupon: $${subtotal.toFixed(2)}
-Extra Exness Discount (10%): $${exnessDiscount}
+Extra Exness Discount (15%): $${exnessDiscount}
 Final Price after Exness: $${finalPrice}`;
   } else {
-    const exnessDiscount = (originalPrice * 0.10).toFixed(2);
-    const finalPrice = (originalPrice * 0.90).toFixed(2);
+    const exnessDiscount = (originalPrice * 0.15).toFixed(2);
+    const finalPrice = (originalPrice * 0.85).toFixed(2);
 
     message += `
-Exness Discount (10%): $${exnessDiscount}
+Exness Discount (15%): $${exnessDiscount}
 Final Price: $${finalPrice}`;
   }
 
