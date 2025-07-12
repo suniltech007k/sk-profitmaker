@@ -1271,14 +1271,14 @@ function applyCoupon() {
     return;
   }
 
-  if (code.toUpperCase() === "SK10OFF") {
-    const discounted = (originalPrice * 0.9).toFixed(2);
+  if (code.toUpperCase() === "SK15OFF") {
+    const discounted = (originalPrice * 0.15).toFixed(2);
     discountEl.innerText = `✅ Coupon Applied! Final Price: $${discounted}`;
     continueBtn.style.display = "inline-block";
     exnessBtn.style.display = "inline-block";
 
     continueBtn.onclick = function () {
-      const message = `Hi, I want to buy the ${selectedPlan} plan using coupon SK10OFF. Final price: $${discounted}`;
+      const message = `Hi, I want to buy the ${selectedPlan} plan using coupon SK15OFF. Final price: $${discounted}`;
       const telegramURL = `https://t.me/SK_ProfitMaker_EA?text=${encodeURIComponent(message)}`;
       window.open(telegramURL, "_blank");
       closeCouponPopup();
