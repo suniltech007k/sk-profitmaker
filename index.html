@@ -1272,7 +1272,7 @@ function applyCoupon() {
   }
 
   if (code.toUpperCase() === "SK15OFF") {
-    const discounted = (originalPrice * 0.9).toFixed(2);
+    const discounted = (originalPrice * 0.85).toFixed(2);
     discountEl.innerText = `✅ Coupon Applied! Final Price: $${discounted}`;
     continueBtn.style.display = "inline-block";
     exnessBtn.style.display = "inline-block";
@@ -1462,7 +1462,7 @@ function applyCoupon() {
   }
 
   if (code.toUpperCase() === "SK15OFF") {
-    const discounted = (originalPrice * 0.9).toFixed(2);
+    const discounted = (originalPrice * 0.85).toFixed(2);
     const discountAmount = (originalPrice * 0.1).toFixed(2);
     discountEl.innerText = `✅ Coupon Applied! Final Price: $${discounted}`;
 
@@ -1593,7 +1593,7 @@ Final Price: $${finalPrice}`;
   const continueBtn = document.getElementById("continueTelegramBtn");
   continueBtn.onclick = function () {
     const discountAmount = (originalPrice * 0.15).toFixed(2);
-    const discounted = (originalPrice * 0.85).toFixed(2);
+   const discounted = (originalPrice * 0.85).toFixed(2);
     const message = `
 Hi, I want to buy the ${selectedPlan} plan using coupon SK15OFF.
 
@@ -1637,7 +1637,7 @@ function applyCoupon() {
   }
 
   if (code.toUpperCase() === "SK15OFF") {
-    const discounted = (originalPrice * 0.9).toFixed(2);
+    const discounted = (originalPrice * 0.85).toFixed(2);
     const discountAmount = (originalPrice * 0.1).toFixed(2);
     discountEl.innerText = `✅ Coupon Applied! Final Price: $${discounted}`;
 
