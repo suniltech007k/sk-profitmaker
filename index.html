@@ -463,6 +463,86 @@ window.addEventListener('DOMContentLoaded', function () {
   </div>
 </section>
 
+<!-- Our Products Section -->
+<section class="products-section" style="padding:40px 20px;text-align:center;">
+  <h2 style="color:#ff9c00;margin-bottom:25px;">Our Products</h2>
+  <div id="product-list" style="display:flex;gap:30px;justify-content:center;flex-wrap:wrap;">
+    <div class="product-card" style="background:#1e1e1e;border-radius:10px;padding:20px;width:280px;box-shadow:0 0 10px rgba(255,156,0,0.4);">
+      <img src="profitmaker-icon.png" alt="SK-ProfitMaker EA" style="width:64px;margin-bottom:10px;">
+      <h3 style="color:#ffdf00;">SK-ProfitMaker EA</h3>
+      <p>Auto trading Gold (XAUUSD) with smart signal & capital protection.</p>
+      <button onclick="showProduct('profitmaker')" style="background:#ff9c00;color:#111;padding:7px 22px;border:none;border-radius:5px;margin-top:10px;font-weight:bold;cursor:pointer;">View Details</button>
+    </div>
+    <div class="product-card" style="background:#1e1e1e;border-radius:10px;padding:20px;width:280px;box-shadow:0 0 10px rgba(41,216,255,0.3);">
+      <img src="supertrend-icon.png" alt="Supertrend EA" style="width:64px;margin-bottom:10px;">
+      <h3 style="color:#29d8ff;">Supertrend EA</h3>
+      <p>Buy/Sell only EA, superfast trend execution with no TP/SL.</p>
+      <button onclick="showProduct('supertrend')" style="background:#29d8ff;color:#111;padding:7px 22px;border:none;border-radius:5px;margin-top:10px;font-weight:bold;cursor:pointer;">View Details</button>
+    </div>
+    <div class="product-card" style="background:#1e1e1e;border-radius:10px;padding:20px;width:280px;box-shadow:0 0 10px rgba(255,245,0,0.19);">
+      <img src="grid-icon.png" alt="Grid EA" style="width:64px;margin-bottom:10px;">
+      <h3 style="color:gold;">Grid EA</h3>
+      <p>Multiple trades grid, BB% filtered entry, Martingale logic.</p>
+      <button onclick="showProduct('grid')" style="background:gold;color:#111;padding:7px 22px;border:none;border-radius:5px;margin-top:10px;font-weight:bold;cursor:pointer;">View Details</button>
+    </div>
+  </div>
+</section>
+
+<!-- Product Details Modal/Box -->
+<div id="product-detail" style="max-width:900px;margin:32px auto 0 auto;display:none;background:#181818;border-radius:12px;padding:32px;box-shadow:0 0 24px rgba(255,156,0,0.12);color:#f1f1f1;text-align:left;position:relative;">
+  <button onclick="closeProduct()" style="position:absolute;top:18px;right:22px;background:#333;color:#ff9c00;border:none;font-size:1.2rem;padding:2px 12px;border-radius:6px;cursor:pointer;">× Close</button>
+  <div id="detail-content"></div>
+</div>
+
+<script>
+  // Product Details Data
+  const productDetails = {
+    profitmaker: `
+      <h2 style="color:#ffdf00;">SK-ProfitMaker EA</h2>
+      <ul style="line-height:1.7;font-size:1.1rem;margin-top:18px;">
+        <li>Scalping & smart auto trading for XAUUSD (Gold)</li>
+        <li>Martingale + drawdown protection logic</li>
+        <li>Custom signals & daily/monthly profit target options</li>
+        <li>Live Telegram alerts, dashboard interface, verified backtests</li>
+        <li>Beginner friendly PDF, video tutorials & full support</li>
+      </ul>
+      <img src="dashboard2.png" alt="SK-ProfitMaker Dashboard" style="width:220px;border-radius:8px;box-shadow:0 0 10px #ff9c00;">
+    `,
+    supertrend: `
+      <h2 style="color:#29d8ff;">Supertrend EA</h2>
+      <ul style="line-height:1.7;font-size:1.1rem;margin-top:18px;">
+        <li>Pure trend-based EA (buy-only or sell-only operation)</li>
+        <li>Uses Supertrend indicator for entries</li>
+        <li>No stop loss/take profit required – fast open/cancel cycle</li>
+        <li>Simple, safe for trending pairs & quick exits</li>
+        <li>MT4/MT5 both versions available</li>
+      </ul>
+      <img src="supertrend-preview.png" alt="Supertrend EA Preview" style="width:220px;border-radius:8px;box-shadow:0 0 10px #29d8ff;">
+    `,
+    grid: `
+      <h2 style="color:gold;">Grid EA</h2>
+      <ul style="line-height:1.7;font-size:1.1rem;margin-top:18px;">
+        <li>Multi-entry grid system, works on pairs/gold</li>
+        <li>Bollinger Bands % filter for safe entries</li>
+        <li>Martingale & fixed lot options both</li>
+        <li>Tracks profit, filters, drawdown in real time</li>
+        <li>Live chart signals & portfolio-level controls</li>
+      </ul>
+      <img src="grid-preview.png" alt="Grid EA Preview" style="width:220px;border-radius:8px;box-shadow:0 0 10px gold;">
+    `,
+  };
+
+  // Show Product Function
+  function showProduct(prodId) {
+    document.getElementById('product-detail').style.display = 'block';
+    document.getElementById('detail-content').innerHTML = productDetails[prodId];
+    window.scrollTo({ top: document.getElementById('product-detail').offsetTop - 50, behavior: 'smooth' });
+  }
+  function closeProduct() {
+    document.getElementById('product-detail').style.display = 'none';
+    document.getElementById('detail-content').innerHTML = '';
+  }
+</script>
 
   
 <section class="section" data-aos="fade-up">
