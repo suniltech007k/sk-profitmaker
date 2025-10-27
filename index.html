@@ -463,30 +463,31 @@ window.addEventListener('DOMContentLoaded', function () {
   </div>
 </section>
 
-<!-- Our Products Section -->
-<section class="products-section" style="padding:40px 20px;text-align:center;">
+<!-- Homepage ka Product Section (replace ya add in main content) -->
+<section style="padding:40px 20px;text-align:center;">
   <h2 style="color:#ff9c00;margin-bottom:25px;">Our Products</h2>
-  <div id="product-list" style="display:flex;gap:30px;justify-content:center;flex-wrap:wrap;">
-    <div class="product-card" style="background:#1e1e1e;border-radius:10px;padding:20px;width:280px;box-shadow:0 0 10px rgba(255,156,0,0.4);">
+  <div style="display:flex;gap:30px;justify-content:center;flex-wrap:wrap;">
+    <div style="background:#1e1e1e;border-radius:10px;padding:20px;width:280px;box-shadow:0 0 10px rgba(255,156,0,0.4);">
       <img src="profitmaker-icon.png" alt="SK-ProfitMaker EA" style="width:64px;margin-bottom:10px;">
       <h3 style="color:#ffdf00;">SK-ProfitMaker EA</h3>
       <p>Auto trading Gold (XAUUSD) with smart signal & capital protection.</p>
-      <button onclick="showProduct('profitmaker')" style="background:#ff9c00;color:#111;padding:7px 22px;border:none;border-radius:5px;margin-top:10px;font-weight:bold;cursor:pointer;">View Details</button>
+      <a href="profitmaker.html" style="background:#ff9c00;color:#111;padding:7px 22px;border:none;border-radius:5px;margin-top:10px;display:inline-block;font-weight:bold;text-decoration:none;">View Details</a>
     </div>
-    <div class="product-card" style="background:#1e1e1e;border-radius:10px;padding:20px;width:280px;box-shadow:0 0 10px rgba(41,216,255,0.3);">
+    <div style="background:#1e1e1e;border-radius:10px;padding:20px;width:280px;box-shadow:0 0 10px rgba(41,216,255,0.3);">
       <img src="supertrend-icon.png" alt="Supertrend EA" style="width:64px;margin-bottom:10px;">
       <h3 style="color:#29d8ff;">Supertrend EA</h3>
       <p>Buy/Sell only EA, superfast trend execution with no TP/SL.</p>
-      <button onclick="showProduct('supertrend')" style="background:#29d8ff;color:#111;padding:7px 22px;border:none;border-radius:5px;margin-top:10px;font-weight:bold;cursor:pointer;">View Details</button>
+      <a href="supertrend.html" style="background:#29d8ff;color:#111;padding:7px 22px;border:none;border-radius:5px;margin-top:10px;display:inline-block;font-weight:bold;text-decoration:none;">View Details</a>
     </div>
-    <div class="product-card" style="background:#1e1e1e;border-radius:10px;padding:20px;width:280px;box-shadow:0 0 10px rgba(255,245,0,0.19);">
+    <div style="background:#1e1e1e;border-radius:10px;padding:20px;width:280px;box-shadow:0 0 10px rgba(255,245,0,0.19);">
       <img src="grid-icon.png" alt="Grid EA" style="width:64px;margin-bottom:10px;">
       <h3 style="color:gold;">Grid EA</h3>
       <p>Multiple trades grid, BB% filtered entry, Martingale logic.</p>
-      <button onclick="showProduct('grid')" style="background:gold;color:#111;padding:7px 22px;border:none;border-radius:5px;margin-top:10px;font-weight:bold;cursor:pointer;">View Details</button>
+      <a href="grid.html" style="background:gold;color:#111;padding:7px 22px;border:none;border-radius:5px;margin-top:10px;display:inline-block;font-weight:bold;text-decoration:none;">View Details</a>
     </div>
   </div>
 </section>
+
 
 <!-- Product Details Modal/Box -->
 <div id="product-detail" style="max-width:900px;margin:32px auto 0 auto;display:none;background:#181818;border-radius:12px;padding:32px;box-shadow:0 0 24px rgba(255,156,0,0.12);color:#f1f1f1;text-align:left;position:relative;">
