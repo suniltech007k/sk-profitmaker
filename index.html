@@ -1,27 +1,324 @@
 <!DOCTYPE html>
-<html>
+<html lang="hi">
 <head>
-<title>SK-ProfitMaker EA</title>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SK-ProfitMaker EA - Automated Gold Trading Solution</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet"/>
+<link href="https://cdn.cn.font.mi.com/font/css?family=MiSans:300,400,500,600,700:Chinese_Simplify,Latin&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style type="text/tailwindcss">
+@layer utilities {
+.ppt-slide {
+@apply relative w-[1280px] min-h-[720px] mx-auto box-border
+}
+}
+</style>
 <style>
-body{background:#0A2540;color:white;font-family:Arial;text-align:center;padding:50px}
-h1{font-size:50px;color:#FF5722}
-p{font-size:20px}
+body {
+    font-family: "Roboto", "MiSans", sans-serif;
+    background: #f5f5f5;
+    margin: 0;
+    padding: 0
+}
+.title-font {
+    font-family: "Roboto", "MiSans", sans-serif;
+    font-weight: 700
+}
+.subtitle-font {
+    font-family: "Roboto", "MiSans", sans-serif;
+    font-weight: 400
+}
+.metric-font {
+    font-family: "Roboto", "MiSans", sans-serif;
+    font-weight: 700
+}
+.slide {
+    display: none;
+    animation: fadeIn 0.5s ease-in-out
+}
+.slide.active {
+    display: block
+}
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    } 
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+.nav-controls {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 1000
+}
+.nav-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #0A2540;
+    color: white;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease
+}
+.nav-btn:hover {
+    background: #FF5722;
+    transform: scale(1.1)
+}
+.nav-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background: #666
+}
+.slide-counter {
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    background: #0A2540;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: 600;
+    z-index: 1000;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3)
+}
+.material-icons {
+    width: 1em
+}
+.material-icons {
+    direction: rtl
+}
 </style>
 </head>
-<body>
-<h1>SK-ProfitMaker EA</h1>
-<p>Automated Gold Trading Solution</p>
-<p>Platform: MetaTrader 4 | Asset: XAUUSD | Min: $500</p>
-<br><br>
-<h2>Products:</h2>
-<p>SK-ProfitMaker EA - $25-$599</p>
-<p>Supertrend EA - Trend Trading</p>
-<p>Grid EA - Multi-layer Trading</p>
-<br><br>
-<h2>Why Choose Us:</h2>
-<p>✓ Verified on Myfxbook</p>
-<p>✓ 6 Months Backtest Data</p>
-<p>✓ 24/7 Telegram Support</p>
-<p>✓ Beginner Friendly</p>
+<body style="overflow-x: hidden">
+
+<!-- Slide 1: Cover Page -->
+<div class="slide active" id="slide1">
+<div class="ppt-slide h-[720px] flex flex-col justify-center items-center relative overflow-hidden">
+<div class="absolute inset-0">
+<img src="https://sfile.chatglm.cn/images-ppt/16c83ed36c25.jpg" alt="Forex Trading" class="w-full h-full object-cover opacity-25"/>
+<div class="absolute inset-0 bg-gradient-to-r from-[#0A2540] via-[#0A2540]/95 to-[#0A2540]/70"></div>
+</div>
+<div class="absolute top-0 left-0 right-0 h-12 bg-[#0A2540] flex items-center justify-between px-12 z-20 border-b border-white/10">
+<div class="flex items-center space-x-3">
+<i class="material-icons text-white text-lg">verified</i>
+<span class="text-white/80 text-sm font-medium tracking-wide">VERIFIED TRADING SOLUTION</span>
+</div>
+<div class="w-32 h-8 bg-white/10 rounded flex items-center justify-center border border-white/20">
+<span class="text-white/60 text-xs font-medium">SK-PROFITMAKER</span>
+</div>
+</div>
+<div class="relative z-10 flex h-full">
+<div class="w-3/5 flex flex-col justify-center" style="padding-left: 70px; padding-right: 20px">
+<div class="mb-8">
+<div class="inline-block px-4 py-2 bg-[#FF5722]/20 rounded-full border border-[#FF5722]/40 mb-6">
+<span class="text-[#FF5722] text-sm font-semibold tracking-wider uppercase">Smart Forex Bot</span>
+</div>
+<h1 class="title-font text-white leading-tight mb-6" style="font-size: 58px; letter-spacing: -0.5px">
+SK-ProfitMaker EA<br/>Automated Trading
+</h1>
+<div class="h-1 w-24 bg-[#FF5722] mb-6"></div>
+<p class="subtitle-font text-white/90 text-2xl font-light leading-relaxed">
+Automate Your Gold Trades<br/>with Smart Profit-Maker Strategy
+</p>
+</div>
+<div class="mt-8 flex items-center space-x-6">
+<div class="flex items-center space-x-2">
+<i class="material-icons text-[#FF5722] text-2xl">psychology</i>
+<span class="text-white/80 text-base font-medium">Smart AI</span>
+</div>
+<div class="flex items-center space-x-2">
+<i class="material-icons text-[#FF5722] text-2xl">security</i>
+<span class="text-white/80 text-base font-medium">Safe Automation</span>
+</div>
+<div class="flex items-center space-x-2">
+<i class="material-icons text-[#FF5722] text-2xl">trending_up</i>
+<span class="text-white/80 text-base font-medium">Real Results</span>
+</div>
+</div>
+</div>
+<div class="w-2/5 flex flex-col justify-center items-start pl-8">
+<div class="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10">
+<div class="flex items-center space-x-3 mb-6">
+<i class="material-icons text-[#FF5722] text-3xl">auto_graph</i>
+<span class="text-white text-lg font-semibold">Product Details</span>
+</div>
+<div class="space-y-4">
+<div class="flex items-start space-x-3">
+<i class="material-icons text-white/60 text-xl mt-1">computer</i>
+<div>
+<p class="text-white text-sm text-white/60 mb-1">Platform</p>
+<p class="text-white font-medium">MetaTrader 4 (MT4)</p>
+</div>
+</div>
+<div class="flex items-start space-x-3">
+<i class="material-icons text-white/60 text-xl mt-1">show_chart</i>
+<div>
+<p class="text-white text-sm text-white/60 mb-1">Asset</p>
+<p class="text-white font-medium">XAUUSD (Gold)</p>
+</div>
+</div>
+<div class="flex items-start space-x-3">
+<i class="material-icons text-white/60 text-xl mt-1">account_balance_wallet</i>
+<div>
+<p class="text-white text-sm text-white/60 mb-1">Minimum Capital</p>
+<p class="text-white font-medium">$500 USD</p>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-6 flex items-center space-x-2 text-white/50 text-sm">
+<i class="material-icons text-base">verified_user</i>
+<span>Verified on Myfxbook</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Slide 2 -->
+<div class="slide" id="slide2">
+<div class="ppt-slide h-[720px] flex flex-col bg-[#FEFEFE]">
+<div class="h-[85px] bg-[#0A2540] flex items-center justify-between px-12">
+<div class="flex items-center space-x-3">
+<i class="material-icons text-white text-lg">verified</i>
+<span class="text-white/80 text-sm font-medium tracking-wide">VERIFIED TRADING SOLUTION</span>
+</div>
+<div class="w-32 h-8 bg-white/10 rounded flex items-center justify-center border border-white/20">
+<span class="text-white/60 text-xs font-medium">SK-PROFITMAKER</span>
+</div>
+</div>
+<div class="flex-grow flex flex-col px-12 py-8">
+<div class="mb-8">
+<h1 class="title-font text-[#0A2540] text-[40px] leading-tight mb-2">Why Choose SK-ProfitMaker EA?</h1>
+<div class="h-1 w-20 bg-[#FF5722]"></div>
+</div>
+<p class="text-[#0A2540]/70 text-xl mb-6">Precision • Safety • Smart Automation • Capital Protection</p>
+<div class="grid grid-cols-4 gap-6 mb-8">
+<div class="flex flex-col items-center p-5 bg-gradient-to-br from-[#0A2540]/5 to-[#0A2540]/10 rounded-xl border border-[#0A2540]/10">
+<i class="material-icons text-[#0A2540] text-5xl mb-3">hub</i>
+<p class="text-[#0A2540] font-semibold text-lg">Automated</p>
+<p class="text-[#0A2540]/70 text-sm">24/7 Execution</p>
+</div>
+<div class="flex flex-col items-center p-5 bg-gradient-to-br from-[#0A2540]/5 to-[#0A2540]/10 rounded-xl border border-[#0A2540]/10">
+<i class="material-icons text-[#0A2540] text-5xl mb-3">security</i>
+<p class="text-[#0A2540] font-semibold text-lg">Risk Mgmt</p>
+<p class="text-[#0A2540]/70 text-sm">SL Protection</p>
+</div>
+<div class="flex flex-col items-center p-5 bg-gradient-to-br from-[#0A2540]/5 to-[#0A2540]/10 rounded-xl border border-[#0A2540]/10">
+<i class="material-icons text-[#0A2540] text-5xl mb-3">notifications</i>
+<p class="text-[#0A2540] font-semibold text-lg">Real-time</p>
+<p class="text-[#0A2540]/70 text-sm">Telegram Alerts</p>
+</div>
+<div class="flex flex-col items-center p-5 bg-gradient-to-br from-[#0A2540]/5 to-[#0A2540]/10 rounded-xl border border-[#0A2540]/10">
+<i class="material-icons text-[#0A2540] text-5xl mb-3">assessment</i>
+<p class="text-[#0A2540] font-semibold text-lg">Tracking</p>
+<p class="text-[#0A2540]/70 text-sm">Verified Results</p>
+</div>
+</div>
+<div class="mt-auto">
+<div class="flex items-center space-x-2 mb-6">
+<i class="material-icons text-[#0A2540] text-2xl">verified</i>
+<p class="text-[#0A2540] text-2xl font-semibold">Verified Performance</p>
+</div>
+<div class="grid grid-cols-4 gap-5">
+<div class="bg-white rounded-xl p-6 border-2 border-[#0A2540]/10 hover:border-[#FF5722]/50 transition-all">
+<div class="flex items-center justify-between mb-3">
+<i class="material-icons text-[#0A2540]/60 text-3xl">check_circle</i>
+<span class="text-[#0A2540]/50 text-sm font-medium">Verification</span>
+</div>
+<div class="metric-font text-[#FF5722] text-[36px] leading-none mb-2">Myfxbook</div>
+<p class="text-[#0A2540]/70 text-base">Live Performance</p>
+</div>
+<div class="bg-white rounded-xl p-6 border-2 border-[#0A2540]/10 hover:border-[#FF5722]/50 transition-all">
+<div class="flex items-center justify-between mb-3">
+<i class="material-icons text-[#0A2540]/60 text-3xl">history</i>
+<span class="text-[#0A2540]/50 text-sm font-medium">Backtest</span>
+</div>
+<div class="metric-font text-[#FF5722] text-[36px] leading-none mb-2">6 Months</div>
+<p class="text-[#0A2540]/70 text-base">Historical Data</p>
+</div>
+<div class="bg-white rounded-xl p-6 border-2 border-[#0A2540]/10 hover:border-[#FF5722]/50 transition-all">
+<div class="flex items-center justify-between mb-3">
+<i class="material-icons text-[#0A2540]/60 text-3xl">trending_down</i>
+<span class="text-[#0A2540]/50 text-sm font-medium">Spreads</span>
+</div>
+<div class="metric-font text-[#FF5722] text-[36px] leading-none mb-2">Low Cost</div>
+<p class="text-[#0A2540]/70 text-base">Broker Compatible</p>
+</div>
+<div class="bg-white rounded-xl p-6 border-2 border-[#0A2540]/10 hover:border-[#FF5722]/50 transition-all">
+<div class="flex items-center justify-between mb-3">
+<i class="material-icons text-[#0A2540]/60 text-3xl">school</i>
+<span class="text-[#0A2540]/50 text-sm font-medium">Experience</span>
+</div>
+<div class="metric-font text-[#FF5722] text-[36px] leading-none mb-2">Easy</div>
+<p class="text-[#0A2540]/70 text-base">Beginner Friendly</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Navigation Controls -->
+<div class="nav-controls">
+<button class="nav-btn" id="prevBtn" onclick="changeSlide(-1)">
+<i class="material-icons">keyboard_arrow_up</i>
+</button>
+<button class="nav-btn" id="nextBtn" onclick="changeSlide(1)">
+<i class="material-icons">keyboard_arrow_down</i>
+</button>
+</div>
+
+<!-- Slide Counter -->
+<div class="slide-counter">
+<span id="currentSlide">1</span> / <span id="totalSlides">10</span>
+</div>
+
+<script>
+let currentSlideIndex = 1;
+const totalSlides = 10;
+
+function showSlide(index) {
+const slides = document.querySelectorAll('.slide');
+if (index > totalSlides) currentSlideIndex = 1;
+if (index < 1) currentSlideIndex = totalSlides;
+
+slides.forEach(slide => slide.classList.remove('active'));
+slides[currentSlideIndex - 1].classList.add('active');
+
+document.getElementById('currentSlide').textContent = currentSlideIndex;
+document.getElementById('prevBtn').disabled = currentSlideIndex === 1;
+document.getElementById('nextBtn').disabled = currentSlideIndex === totalSlides;
+}
+
+function changeSlide(n) {
+currentSlideIndex += n;
+showSlide(currentSlideIndex);
+}
+
+document.addEventListener('keydown', function(event) {
+if (event.key === 'ArrowDown' || event.key === 'ArrowRight') {
+changeSlide(1);
+} else if (event.key === 'ArrowUp' || event.key === 'ArrowLeft') {
+changeSlide(-1);
+}
+});
+</script>
 </body>
 </html>
