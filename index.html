@@ -43,7 +43,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:60px;padding:0 20px;d
 .hamburger span{width:20px;height:2px;background:var(--text);border-radius:2px;display:block}
 .mob-drawer{display:none;position:fixed;top:60px;left:0;right:0;bottom:0;background:rgba(2,4,10,.97);backdrop-filter:blur(16px);z-index:190;flex-direction:column;padding:20px 16px;gap:4px;overflow-y:auto}
 .mob-drawer.open{display:flex}
-.mob-link{padding:13px 16px;font-size:14px;font-weight:600;color:var(--muted);text-decoration:none;border-radius:10px;border:1px solid transparent;transition:all .2s}
+.mob-link{padding:14px 16px;font-size:15px;min-height:44px;font-weight:600;color:var(--muted);text-decoration:none;border-radius:10px;border:1px solid transparent;transition:all .2s}
 .mob-link:hover,.mob-link:active{background:var(--glass);border-color:rgba(255,255,255,.08);color:var(--text)}
 .mob-cta{margin-top:10px;padding:15px;background:var(--gold);color:#02040a;font-weight:800;font-size:14px;border-radius:11px;text-align:center;text-decoration:none;display:block}
 .mob-trial{margin-top:8px;padding:14px;background:rgba(5,214,138,.1);border:1px solid rgba(5,214,138,.3);color:var(--green);font-weight:800;font-size:13px;border-radius:11px;text-align:center;text-decoration:none;display:block}
@@ -223,36 +223,115 @@ footer{padding:18px 20px;border-top:1px solid rgba(255,255,255,.06);display:flex
 .rvl{opacity:0;transform:translateX(-22px);transition:all .7s cubic-bezier(.16,1,.3,1)}.rvl.in{opacity:1;transform:translateX(0)}
 .rvr{opacity:0;transform:translateX(22px);transition:all .7s cubic-bezier(.16,1,.3,1)}.rvr.in{opacity:1;transform:translateX(0)}
 
-/* MOBILE */
+
+/* ═══════════════════════════════════
+   MOBILE FIRST — Comprehensive Fix
+   ═══════════════════════════════════ */
+
+/* Grid utility classes */
+.grid-2col { display:grid; grid-template-columns:1fr 1fr; gap:40px; }
+.grid-2col-sm { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+.grid-3col { display:grid; grid-template-columns:repeat(3,1fr); gap:11px; }
+
+/* ── 880px tablet/large phone ── */
 @media(max-width:880px){
-  .nav-links,.nav-cta{display:none}
-  .hamburger{display:flex}
-  .feat-grid{grid-template-columns:1fr 1fr}
-  .pg{grid-template-columns:repeat(2,1fr)}
-  .strat-grid,.manual-grid,.analyser-grid{grid-template-columns:1fr}
-  .tg{grid-template-columns:1fr}
-  .steps-g{grid-template-columns:repeat(2,1fr)}
-  div.two-col{grid-template-columns:1fr!important;gap:36px!important}
-  .price-grid{flex-direction:column;align-items:center}
-  .pc-card{width:100%;max-width:320px}
+  .nav-links,.nav-cta { display:none }
+  .hamburger { display:flex }
+
+  .feat-grid { grid-template-columns:1fr 1fr }
+  .pg { grid-template-columns:repeat(2,1fr) }
+  .strat-grid { grid-template-columns:1fr }
+  .manual-grid { grid-template-columns:1fr }
+  .analyser-grid { grid-template-columns:1fr }
+  .tg { grid-template-columns:1fr }
+  .steps-g { grid-template-columns:repeat(2,1fr) }
+  .price-grid { flex-direction:column; align-items:center }
+  .pc-card { width:100%; max-width:340px }
+  .two-col,.grid-2col { grid-template-columns:1fr; gap:28px }
+  .grid-3col { grid-template-columns:1fr 1fr }
+  .pnl-th,.pnl-row { grid-template-columns:50px 1fr 60px 60px 38px 70px; padding:6px 12px }
 }
-@media(max-width:520px){
-  section{padding:52px 14px}
-  h1{letter-spacing:-1.5px}
-  .feat-grid{grid-template-columns:1fr}
-  .pg{grid-template-columns:repeat(2,1fr)}
-  .steps-g{grid-template-columns:1fr}
-  .h-btns{flex-direction:column;width:100%;max-width:280px}
-  .btn-g,.btn-o,.trial-cta{width:100%;text-align:center;justify-content:center}
-  .h-stats{width:100%}
-  .hs{flex:1 1 40%;border-right:none!important;border-bottom:1px solid rgba(255,255,255,.06)}
-  .hs:nth-child(odd){border-right:1px solid rgba(255,255,255,.06)!important}
-  .hs:last-child,.hs:nth-last-child(2):nth-child(odd){border-bottom:none}
-  .pnl-stats{grid-template-columns:repeat(2,1fr)}
-  footer{flex-direction:column;text-align:center}
-  .trial-card{padding:24px 18px}
-  .contact-card{padding:28px 16px}
+
+/* ── 580px small phones ── */
+@media(max-width:580px){
+  nav { padding:0 14px; height:56px }
+  .trial-banner { padding:8px 14px; font-size:11px }
+  .trial-banner a { display:block; margin:4px 0 0 }
+  .ticker { /* already ok */ }
+  .hero { padding:52px 14px 44px }
+  h1 { letter-spacing:-1.5px }
+  .brand-img { width:76px; height:76px }
+  .brand-name { font-size:13px; letter-spacing:2px }
+
+  .h-btns { flex-direction:column; width:100%; max-width:280px; margin:0 auto }
+  .btn-g,.btn-o,.trial-cta { width:100%; text-align:center; justify-content:center; padding:13px 20px }
+
+  .h-stats { width:100%; border-radius:11px }
+  .hs { flex:1 1 calc(50% - 1px); min-width:0; border-right:none!important; border-bottom:1px solid rgba(255,255,255,.06) }
+  .hs:nth-child(odd) { border-right:1px solid rgba(255,255,255,.06)!important }
+  .hs:nth-last-child(1),.hs:nth-last-child(2):nth-child(odd) { border-bottom:none!important }
+  .hs-v { font-size:15px }
+  .hs-l { font-size:7px }
+
+  .paper-note { flex-direction:column; text-align:center; border-radius:12px; padding:10px 14px }
+
+  section { padding:48px 14px }
+  .s-title { letter-spacing:-1px }
+  .disc { padding:18px 14px }
+
+  /* Trial section */
+  .trial-card { padding:22px 16px }
+  .trial-days { font-size:clamp(48px,15vw,80px) }
+  .trial-btn { padding:13px 22px; font-size:13px; width:100%; justify-content:center }
+  .grid-3col { grid-template-columns:1fr }
+
+  /* Analyser section */
+  .analyser-grid { grid-template-columns:1fr }
+  .grid-2col-sm { grid-template-columns:1fr 1fr }
+
+  /* Features */
+  .feat-grid { grid-template-columns:1fr }
+
+  /* Performance */
+  .pg { grid-template-columns:1fr 1fr }
+
+  /* Steps */
+  .steps-g { grid-template-columns:1fr }
+
+  /* Manual grid */
+  .manual-grid { grid-template-columns:1fr; gap:24px }
+
+  /* Two-col free updates */
+  .grid-2col { grid-template-columns:1fr; gap:20px }
+
+  /* PNL card — hide table on very small screens, show summary only */
+  .pnl-th,.pnl-row { display:none }
+  .pnl-foot { padding:11px 14px }
+  .pnl-stats { grid-template-columns:repeat(2,1fr) }
+
+  /* Pricing */
+  .pc-card { max-width:100%; width:100% }
+  .price-grid { padding:0 }
+
+  /* Contact */
+  .contact-card { padding:28px 16px }
+  .wa-btn { width:100%; justify-content:center; padding:14px 16px }
+
+  /* Footer */
+  footer { flex-direction:column; text-align:center; gap:6px; padding:16px 14px }
+  footer div:last-child { text-align:center }
 }
+
+/* ── 380px very small phones ── */
+@media(max-width:380px){
+  h1 { font-size:32px }
+  .brand-img { width:68px; height:68px }
+  .trial-days { font-size:56px }
+  .pg { grid-template-columns:1fr }
+  .nav-logo { width:28px; height:28px }
+  .nav-name { font-size:10px }
+}
+
 </style>
 </head>
 <body>
@@ -363,7 +442,7 @@ footer{padding:18px 20px;border-top:1px solid rgba(255,255,255,.06);display:flex
       </a>
       <div class="trial-ext">⏰ Trial khatam hone ke baad bhi aur time chahiye? <span>Sunil bhai se baat karo — extend ho sakta hai</span></div>
     </div>
-    <div class="rv" style="display:grid;grid-template-columns:repeat(3,1fr);gap:11px;margin-top:16px;max-width:680px;margin-left:auto;margin-right:auto">
+    <div class="rv grid-3col" style="margin-top:16px;max-width:680px;margin-left:auto;margin-right:auto">
       <div style="padding:14px;background:var(--glass);border:1px solid rgba(255,255,255,.07);border-radius:11px;text-align:center">
         <div style="font-size:18px;margin-bottom:6px">✅</div>
         <div style="font-size:12px;font-weight:700;margin-bottom:3px">Full Access</div>
@@ -424,7 +503,7 @@ footer{padding:18px 20px;border-top:1px solid rgba(255,255,255,.06);display:flex
             <span style="padding:3px 10px;background:rgba(5,214,138,.12);border:1px solid rgba(5,214,138,.25);border-radius:100px;font-size:9px;font-weight:700;color:var(--green)">📋 PAPER TRADE</span>
           </div>
           <div style="padding:16px 14px">
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px">
+            <div class="grid-2col-sm" style="margin-bottom:12px">
               <div style="padding:10px;background:var(--glass);border:1px solid rgba(255,255,255,.07);border-radius:9px;text-align:center">
                 <div style="font-size:8px;color:var(--muted);letter-spacing:1px;margin-bottom:4px">SIMULATED PNL</div>
                 <div style="font-family:'DM Mono',monospace;font-size:20px;color:var(--green);font-weight:500">+₹3,420</div>
@@ -443,7 +522,8 @@ footer{padding:18px 20px;border-top:1px solid rgba(255,255,255,.06);display:flex
             </div>
             <!-- Simulated trades list -->
             <div style="font-size:9px;color:var(--muted);margin-bottom:6px;letter-spacing:1px;font-family:'DM Mono',monospace">SIMULATED TRADES</div>
-            <div style="background:rgba(5,214,138,.04);border:1px solid rgba(5,214,138,.1);border-radius:8px;overflow:hidden">
+            <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:8px">
+            <div style="background:rgba(5,214,138,.04);border:1px solid rgba(5,214,138,.1);border-radius:8px;overflow:hidden;min-width:240px">
               <div style="display:grid;grid-template-columns:50px 1fr 65px;padding:7px 10px;background:rgba(15,30,53,.8);gap:4px">
                 <div style="font-size:8px;font-weight:700;color:var(--gold)">TIME</div>
                 <div style="font-size:8px;font-weight:700;color:var(--gold)">SYMBOL</div>
@@ -464,6 +544,7 @@ footer{padding:18px 20px;border-top:1px solid rgba(255,255,255,.06);display:flex
                 <div style="font-size:9px;color:var(--text)">NIFTY23700CE</div>
                 <div style="font-size:9px;color:var(--green);font-weight:700;text-align:right">+₹2,575</div>
               </div>
+            </div>
             </div>
             <div style="margin-top:10px;padding:8px 10px;background:var(--glass);border:1px solid rgba(245,166,35,.12);border-radius:8px;text-align:center">
               <span style="font-size:9px;color:var(--muted)">⚙️ Settings customizable — qty, targets, strategy switch — sab aap control karte ho</span>
@@ -500,7 +581,7 @@ footer{padding:18px 20px;border-top:1px solid rgba(255,255,255,.06);display:flex
 <!-- FREE UPDATES -->
 <section style="background:var(--bg)">
   <div class="container">
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center" class="two-col rv">
+    <div class="two-col rv grid-2col">
       <div>
         <p class="s-tag">FREE UPDATES</p>
         <h2 class="s-title" style="font-size:clamp(22px,4vw,40px)">Updates milte<br><span style="color:var(--gold)">subscription mein.</span></h2>
