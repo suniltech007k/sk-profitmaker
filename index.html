@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SK Trading Bot — NIFTY Option Trading by Sunil Kushwah</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -18,7 +18,7 @@ html{scroll-behavior:smooth}
   --faint:rgba(255,255,255,.04);
   --r:14px;
 }
-body{background:var(--bg);color:var(--text);font-family:'Syne',sans-serif;overflow-x:hidden;-webkit-tap-highlight-color:transparent}
+body{background:var(--bg);color:var(--text);font-family:'Inter','Segoe UI',system-ui,-apple-system,sans-serif;overflow-x:hidden;-webkit-tap-highlight-color:transparent}
 .bg-c{position:fixed;inset:0;z-index:0;background:radial-gradient(ellipse 80% 50% at 20% -10%,rgba(245,166,35,.05),transparent 60%),radial-gradient(ellipse 60% 40% at 80% 110%,rgba(5,214,138,.04),transparent 60%);pointer-events:none}
 .grid-bg{position:fixed;inset:0;z-index:0;background-image:linear-gradient(rgba(245,166,35,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(245,166,35,.02) 1px,transparent 1px);background-size:80px 80px;pointer-events:none}
 
@@ -196,7 +196,7 @@ section{padding:64px 16px;position:relative;z-index:1}
 .pc-card:hover{transform:translateY(-4px)}
 .pc-card.hot{border-color:rgba(245,166,35,.25);background:rgba(245,166,35,.025)}
 .pc-card.hot::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
-.pc-badge{position:absolute;top:-10px;left:50%;transform:translateX(-50%);padding:3px 14px;background:var(--gold);color:#02040a;font-size:9px;font-weight:800;border-radius:100px;letter-spacing:1.5px;white-space:nowrap}
+.pc-badge{display:inline-block;padding:4px 16px;background:var(--gold);color:#02040a;font-size:9px;font-weight:800;border-radius:100px;letter-spacing:1.5px;white-space:nowrap;margin-bottom:14px}
 .pc-name{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--muted);margin-bottom:16px}
 .pc-price{font-family:'DM Mono',monospace;font-size:40px;font-weight:500;color:var(--text);line-height:1;margin-bottom:4px}
 .pc-price sup{font-size:17px;vertical-align:top;margin-top:9px;color:var(--gold)}
@@ -737,7 +737,7 @@ footer{padding:18px 20px;border-top:1px solid rgba(255,255,255,.06);display:flex
         <a href="#contact" class="pc-btn out">WhatsApp karo →</a>
       </div>
       <div class="pc-card hot rv">
-        <div class="pc-badge">MOST POPULAR</div>
+        <div style="text-align:center;margin-bottom:0"><div class="pc-badge">MOST POPULAR</div></div>
         <div class="pc-name">PRO</div>
         <div class="pc-price"><sup>₹</sup>999<span class="pc-per">/month</span></div>
         <p class="pc-desc">Full features + dono strategies + priority support.</p>
@@ -807,86 +807,124 @@ footer{padding:18px 20px;border-top:1px solid rgba(255,255,255,.06);display:flex
 </footer>
 
 <script>
-// ─── MARKET DATA — using allorigins CORS proxy ───
-// allorigins.win bypasses CORS for static websites — works on mobile too
+// ─── MARKET DATA — Multi-proxy fallback system ───
 const SYMS = [
-  {pa:'p0a',ca:'c0a',pb:'p0b',cb:'c0b',sym:'^NSEI',   demo:'demoN'},
-  {pa:'p1a',ca:'c1a',pb:'p1b',cb:'c1b',sym:'^NSEBANK'},
-  {pa:'p2a',ca:'c2a',pb:'p2b',cb:'c2b',sym:'^BSESN'},
-  {pa:'p3a',ca:'c3a',pb:'p3b',cb:'c3b',sym:'NIFTY_FIN_SERVICE.NS'},
-  {pa:'p4a',ca:'c4a',pb:'p4b',cb:'c4b',sym:'NIFTY_MID_SELECT.NS'},
+  {pa:'p0a',ca:'c0a',pb:'p0b',cb:'c0b',sym:'^NSEI',   demo:'demoN', label:'NIFTY 50'},
+  {pa:'p1a',ca:'c1a',pb:'p1b',cb:'c1b',sym:'^NSEBANK', label:'BANK NIFTY'},
+  {pa:'p2a',ca:'c2a',pb:'p2b',cb:'c2b',sym:'^BSESN',   label:'SENSEX'},
+  {pa:'p3a',ca:'c3a',pb:'p3b',cb:'c3b',sym:'NIFTY_FIN_SERVICE.NS', label:'FIN NIFTY'},
+  {pa:'p4a',ca:'c4a',pb:'p4b',cb:'c4b',sym:'NIFTY_MID_SELECT.NS',  label:'MIDCAP'},
 ];
 
-const PROXY = 'https://api.allorigins.win/raw?url=';
+// Multiple CORS proxies — tries each until one works
+const PROXIES = [
+  u => `https://corsproxy.io/?${encodeURIComponent(u)}`,
+  u => `https://api.allorigins.win/raw?url=${encodeURIComponent(u)}`,
+  u => `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(u)}`,
+];
 
 function fmtN(n){
-  return n>=1000 ? n.toLocaleString('en-IN',{maximumFractionDigits:2}) : n.toFixed(2);
+  if(n >= 100000) return (n/100000).toFixed(2) + 'L';
+  if(n >= 1000)   return n.toLocaleString('en-IN',{maximumFractionDigits:2});
+  return n.toFixed(2);
 }
 
-async function fetchSym(sym){
-  try{
-    const yahooUrl = `https://query1.finance.yahoo.com/v8/finance/chart/${encodeURIComponent(sym)}?interval=1d&range=2d`;
-    const url = PROXY + encodeURIComponent(yahooUrl);
-    const r = await fetch(url, {cache:'no-store'});
-    if(!r.ok) return null;
-    const d = await r.json();
-    const meta = d?.chart?.result?.[0]?.meta;
-    if(!meta) return null;
-    const price = meta.regularMarketPrice;
-    const prev  = meta.chartPreviousClose || meta.previousClose || meta.regularMarketPreviousClose;
-    if(!price || !prev) return null;
-    const chg = price - prev;
-    const pct = (chg/prev)*100;
-    const state = meta.marketState || 'CLOSED';
-    return {price, chg, pct, state};
-  } catch(e){ return null; }
+async function fetchWithProxy(sym){
+  const yahooUrl = `https://query1.finance.yahoo.com/v8/finance/chart/${encodeURIComponent(sym)}?interval=1d&range=2d`;
+  
+  // Try direct first (works on some browsers/networks)
+  for(const proxyFn of [u=>u, ...PROXIES]){
+    try{
+      const url = proxyFn(yahooUrl);
+      const ctrl = new AbortController();
+      const tid = setTimeout(()=>ctrl.abort(), 6000); // 6s timeout
+      const r = await fetch(url, {
+        cache: 'no-store',
+        signal: ctrl.signal,
+        headers: proxyFn === (u=>u) ? {} : {}
+      });
+      clearTimeout(tid);
+      if(!r.ok) continue;
+      const d = await r.json();
+      const meta = d?.chart?.result?.[0]?.meta;
+      if(!meta) continue;
+      const price = meta.regularMarketPrice;
+      const prev  = meta.chartPreviousClose
+                 || meta.previousClose
+                 || meta.regularMarketPreviousClose;
+      if(!price || !prev) continue;
+      return {
+        price,
+        chg: price - prev,
+        pct: ((price - prev)/prev)*100,
+        state: meta.marketState || 'CLOSED'
+      };
+    } catch(e){ continue; }
+  }
+  return null;
 }
 
-function setTicker(s, d){
+function applyTicker(s, d){
   const up  = d.chg >= 0;
   const cls = up ? 'up' : 'dn';
   const arr = up ? '▲' : '▼';
   const ps  = `${arr} ${fmtN(d.price)}`;
   const cs  = `${up?'+':''}${d.pct.toFixed(2)}%`;
-  [s.pa, s.pb].forEach(id=>{ const el=document.getElementById(id); if(el){el.textContent=ps;el.className=cls;} });
-  [s.ca, s.cb].forEach(id=>{ const el=document.getElementById(id); if(el){el.textContent=cs;el.className=cls;} });
-  if(s.demo){ const el=document.getElementById(s.demo); if(el) el.textContent='₹'+fmtN(d.price); }
+  [s.pa, s.pb].forEach(id=>{
+    const el = document.getElementById(id);
+    if(el){ el.textContent = ps; el.className = cls; }
+  });
+  [s.ca, s.cb].forEach(id=>{
+    const el = document.getElementById(id);
+    if(el){ el.textContent = cs; el.className = cls; }
+  });
+  if(s.demo){
+    const el = document.getElementById(s.demo);
+    if(el) el.textContent = '₹ ' + fmtN(d.price);
+  }
+}
+
+function setBadge(ok, open){
+  const b = document.getElementById('tBadge');
+  if(!b) return;
+  if(!ok){
+    b.textContent = '● —';
+    b.style.color = 'var(--muted)';
+    b.style.animation = 'none';
+  } else if(open){
+    b.textContent = '● LIVE';
+    b.style.color = 'var(--green)';
+    b.style.animation = 'blink 2s infinite';
+  } else {
+    b.textContent = '● Last Close';
+    b.style.color = 'var(--gold)';
+    b.style.animation = 'none';
+    b.style.opacity = '1';
+  }
 }
 
 let mktOpen = false;
 
 async function refreshMkt(){
+  // Fetch all symbols in parallel for speed
+  const results = await Promise.all(SYMS.map(s => fetchWithProxy(s.sym)));
   let ok = false;
-  for(const s of SYMS){
-    const d = await fetchSym(s.sym);
-    if(!d) continue;
+  results.forEach((d, i)=>{
+    if(!d) return;
     ok = true;
     mktOpen = d.state === 'REGULAR';
-    setTicker(s, d);
-  }
-  const badge = document.getElementById('tBadge');
-  if(badge){
-    if(!ok){
-      badge.textContent = '● Data unavailable';
-      badge.style.color = 'var(--muted)';
-    } else if(mktOpen){
-      badge.textContent = '● LIVE';
-      badge.style.color = 'var(--green)';
-      badge.style.animation = 'blink 2s infinite';
-    } else {
-      badge.textContent = '● Last Close';
-      badge.style.color = 'var(--gold)';
-      badge.style.animation = 'none';
-      badge.style.opacity = '1';
-    }
-  }
+    applyTicker(SYMS[i], d);
+  });
+  setBadge(ok, mktOpen);
   return ok;
 }
 
-// Start fetch, then schedule refresh
-refreshMkt().then(()=>{
-  setInterval(refreshMkt, mktOpen ? 30000 : 300000);
-});
+// Initial load
+refreshMkt();
+// Refresh every 30s (market open) or 5min (closed)
+setInterval(()=>{
+  refreshMkt().then(()=>{});
+}, mktOpen ? 30000 : 300000);
 
 // ─── HERO CANDLES ───
 const cv=document.getElementById('hc'), cx=cv.getContext('2d');
